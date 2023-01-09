@@ -3,7 +3,7 @@ package simple;
 import java.util.*;
 
 
-public class twoSum {
+public class twoSum_1 {
     public static void main(String[] args) {
         int target = 17;
         int[] numbers = {2,6,11,15};

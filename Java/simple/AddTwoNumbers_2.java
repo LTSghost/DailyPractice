@@ -3,7 +3,7 @@ package simple;
 import java.util.*;
 // import java.util.Collections;
 
-public class AddTwoNumbers {
+public class AddTwoNumbers_2 {
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(6);
