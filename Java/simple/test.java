@@ -38,7 +38,7 @@ public class test {
         
         // System.out.println(diff);
         
-
+        
         int[] gas = {1,2,3,4,5};
         int[] cost = {3,4,5,1,2};
         for (int i = 0; i < gas.length; i++) {
@@ -97,7 +97,20 @@ public class test {
                 sn.add(current.left);
             }
         }
-
         System.out.println("listNodeValue = " + listNodeValue);
+
+        //-------------------------- 35 Search Insert Position
+        int ans = 5;
+        List<Integer> nums = new ArrayList<>();
+        nums.add(1);
+        nums.add(3);
+        nums.add(5);
+        nums.add(6);
+
+        if ( nums.contains(ans)) System.out.println("yes");
+    
+        System.out.println(nums.get(3));
+
+        
     }
 }
