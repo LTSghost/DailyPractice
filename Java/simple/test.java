@@ -69,6 +69,35 @@ public class test {
   
         // print the list
         System.out.println(list);
+
+        //------------------------------------------------- stack prac
+        List<Integer> listNodeValue = new ArrayList<>();
+
+
+        //  1
+        //   \
+        //    2
+        //   /
+        //  3
+        TreeNode rootRightRight = new TreeNode();
+        TreeNode rootRightLeft = new TreeNode(3);
+        TreeNode rootRight = new TreeNode(2,rootRightLeft,rootRightRight);
+        TreeNode rootLeft = new TreeNode();
+        TreeNode root = new TreeNode(1, rootLeft, rootRight);
+
+        Stack<TreeNode> sn = new Stack<>();
+        sn.add(root);
+
+        while ( !sn.isEmpty() ) {
+            TreeNode current = sn.peek();
+            sn.pop();
+            if ( current != null ) {
+                listNodeValue.add(current.val);
+                sn.add(current.right);
+                sn.add(current.left);
+            }
+        }
+
+        System.out.println("listNodeValue = " + listNodeValue);
     }
 }
-

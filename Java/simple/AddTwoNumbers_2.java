@@ -10,7 +10,7 @@ public class AddTwoNumbers_2 {
         ListNode l3 = new ListNode(3, l1); // 3, 1
         ListNode l4 = new ListNode(4,l2); 
         ListNode l5 = new ListNode(5,l4); // 5, 4, 6
-        ArrayList result = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
 
         ListNode nn = addTwoNumbers(l5, l3);
         
