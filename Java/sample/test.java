@@ -1,8 +1,9 @@
-package simple;
+package sample;
 
 import java.lang.reflect.Array;
 import java.util.*;
-import simple.twoSum_1;
+
+import sample.twoSum_1;
 
 public class test {
     public static void main(String[] args) {
@@ -101,16 +102,45 @@ public class test {
 
         //-------------------------- 35 Search Insert Position
         int ans = 5;
-        List<Integer> nums = new ArrayList<>();
-        nums.add(1);
-        nums.add(3);
-        nums.add(5);
-        nums.add(6);
+        List<Integer> nums = Arrays.asList(1,3,5,6);
+        
+        System.out.println(nums);
 
-        if ( nums.contains(ans)) System.out.println("yes");
-    
-        System.out.println(nums.get(3));
+        int[][] ar = {{0,1},{1,5},{2,3},{2,6}};
+        System.out.println(Arrays.toString(ar[0]));
+
+        // Map<Integer, List<Integer>> adj = new HashMap<>();
+        // adj.get(adj)
+        // adj.computeIfAbsent(null, null)
+        
+        System.out.println(nums.size());
+
+        List<List<Integer>> A2 = Arrays.asList(nums);
+        System.out.println(A2);
+
+        ListNode n2 = new ListNode(3);
+        ListNode n1 = new ListNode(2,n2);
+        ListNode n0 = new ListNode(1,n1);
+        ListNode curr = new ListNode();
+
+        Stack<Integer> sn0 = new Stack<>();
+
+        while ( n0 != null ){
+            sn0.add(n0.val);
+            n0 = n0.next;
+        }
+
+        while ( !sn0.isEmpty() ) {
+            curr = curr.next;
+            curr.val = sn0.pop();
+        }
+
+        System.out.println(curr.val);
+        System.out.println(curr.next.val);
+        System.out.println(curr.next.next.val);
 
         
+
     }
+
 }

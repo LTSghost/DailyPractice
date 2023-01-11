@@ -1,4 +1,4 @@
-package simple;
+package sample;
 
 public class MinimumNumberOfArrowsToBurstBallonsNO452 {
     public static void main(String[] args) {

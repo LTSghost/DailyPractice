@@ -1,4 +1,4 @@
-package simple;
+package sample;
 
 public class TreeNode {
     int val;

@@ -1,4 +1,4 @@
-package simple;
+package sample;
 
 import java.util.*;
 // import java.util.Collections;

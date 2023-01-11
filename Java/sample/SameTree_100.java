@@ -1,6 +1,4 @@
-package simple;
-
-import java.util.*;
+package sample;
 
 public class SameTree_100 {
     public static void main(String[] args) {

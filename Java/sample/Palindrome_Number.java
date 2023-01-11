@@ -1,4 +1,4 @@
-package simple;
+package sample;
 
 import java.util.Scanner;
 
@@ -6,10 +6,11 @@ public class Palindrome_Number {
     public static void main(String[] args) {
         System.out.println("Please input a number, judgement is Palindrome or not.");
         System.out.print(": ");
-        Scanner sc = new Scanner(System.in);
-        int input = sc.nextInt();
-        
-        System.out.println(palindrome(input) ? "isPalindrome" : "Not");
+        try (Scanner sc = new Scanner(System.in)) {
+            int input = sc.nextInt();
+            
+            System.out.println(palindrome(input) ? "isPalindrome" : "Not");
+        }
     }
 
     static boolean palindrome(int input) {
