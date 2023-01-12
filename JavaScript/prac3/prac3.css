@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+#divSub {
+    padding-top: 5px;
+    padding-left: 80px;
+}
+fieldset {
+    width: 300px;
+    border: solid;
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: 2px solid #828282;
+}

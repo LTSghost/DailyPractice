@@ -40,6 +40,8 @@ public class MinimumTimeToCollectAllApplesInATree_1443 {
             int a = edge[0], b = edge[1];
             adj.computeIfAbsent(a, value -> new ArrayList<Integer>()).add(b);
             adj.computeIfAbsent(b, value -> new ArrayList<Integer>()).add(a);
+            System.out.println(adj);
+
         }
         return dfs(0, -1, adj, hasApple);
 	}
