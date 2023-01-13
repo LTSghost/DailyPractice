@@ -9,22 +9,32 @@
 </head>
 <body>
     <div>
-    <form action="">
+    <!-- <form action=""> -->
         <fieldset>
             <legend>註冊: </legend>
-            帳戶: <input type="text">
-            <br> 
-            密碼: <input type="text">
-            <br>
-            Email: <input type="text">
-            <br>
-            手機: <input type="text">
-            <br>
-            <div id="divSub">
-                <button type="submit">提交</button>
+            <div class="st1">
+                <label class="t1" for="account">帳戶:</label> 
+                <input type="text" id="account"  required> <label id="acCheck" style="color: #f92b2b;"></label> 6-18個字符, 可使用數字, 字母, 下劃線, 須以字母開頭
             </div>
-    </fieldset>
-    <script src="./prac3.js"></script>
+            <div class="st1">
+                <label class="t1" for="account">密碼:</label>
+                <input type="password" id="pw" > <label id="pwCheck" style="color: #f92b2b;"></label> 6-18個字符, 區分大小寫
+            </div>
+            <div class="st1">
+                <label class="t1" for="account">Email:</label>
+                <input type="email" id="email" > <label id="emailCheck" style="color: #f92b2b;"></label>
+            </div>
+            <div class="st1">
+                <label class="t1" for="account">手機:</label>
+                <input type="text" id="phone" > <label id="phoneCheck" style="color: #f92b2b;"></label>
+            </div>
+            <div id="divSub">
+                <button id="bt1" onclick="bt1()">提交</button>
+            </div>
+        </fieldset>
+    <!-- </form> -->
     </div>
+
+    <script src="./prac3.js"></script>
 </body>
 </html>

@@ -5,28 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>prac4</title>
+    <link rel="stylesheet" href="./prac4.css">
 </head>
 <body>
-    <div>
-        編號: <input type="text">
-        姓名: <input type="text">
-        性別: <select name="" id=""></select>
-        <button>添加</button>
+    <div id="div">
+        <label class="t1" for="number">編號:</label><input type="text" id="number" autofocus placeholder="請輸入編號">
+        <label class="t1" for="number">姓名:</label><input type="text" id="name" autofocus placeholder="請輸入姓名">
+        <label class="t1" for="number">性別:</label>
+        <select id="select" name="month" required>
+            <option value="">-請選擇-</option>
+            <option value="1">男</option>
+            <option value="0">女</option>
+        </select>
+        <button onclick="add()">添加</button>
+        
+        <br>
+
+        <div class="tableDiv" >
+            <table id="table">
+                <tr>
+                    <th>編號</th>
+                    <th>姓名</th>
+                    <th>性別</th>
+                </tr>
+            </table>
+        </div>
+
     </div>
-     
-    <p id = "GFG_UP" style =
-        "font-size: 15px; font-weight: bold;">
-    </p>
- 
-     
-    <button onclick = "constructTable('#table')">
-        click here
-    </button>
-     
-    <br><br>
-     
-    <table align = "center"
-            id="table" border="1">
-    </table>
+
+    <script src="./prac4.js"></script>
 </body>
 </html>

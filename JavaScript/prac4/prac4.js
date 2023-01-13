@@ -1,58 +1,46 @@
-var el_up = document.getElementById("GFG_UP");
-        
-    var list = [
-        { "col_1": "val_11", "col_3": "val_13" },
-        { "col_2": "val_22", "col_3": "val_23" },
-        { "col_1": "val_31", "col_3": "val_33" }
-    ];
-        
-    el_up.innerHTML = "Click on the button to create "
-            +   "the table from the JSON data.<br><br>"
-            + JSON.stringify(list[0]) + "<br>"
-            + JSON.stringify(list[1]) + "<br>"
-            + JSON.stringify(list[2]);  
-            
-    function constructTable(selector) {
-            
-        // Getting the all column names
-        var cols = Headers(list, selector); 
+var json = `[
+    {"number":1,"name":"張三","gender":"男"},
+    {"number":2,"name":"李四","gender":"女"},
+    {"number":3,"name":"王五","gender":"男"}
+]`;
+var obj = JSON.parse(json); 
+console.log(obj[0]); //输出“张三” 
 
-        // Traversing the JSON data
-        for (var i = 0; i < list.length; i++) {
-            var row = $('<tr/>');  
-            for (var colIndex = 0; colIndex < cols.length; colIndex++)
-            {
-                var val = list[i][cols[colIndex]];
-                    
-                // If there is any key, which is matching
-                // with the column name
-                if (val == null) val = ""; 
-                    row.append($('<td/>').html(val));
-            }
-                
-            // Adding each row to the table
-            $(selector).append(row);
-        }
+var initTh = document.getElementsByTagName('th');
+
+for ( let i = 0 ; i < obj.length; i++) {
+    var tr = document.createElement('tr');
+    table.appendChild(tr);
+    for ( let j = 0; j < initTh.length; j++) {
+        var td = document.createElement('td');
+        td.innerHTML = obj[i].number;
+        tr.appendChild(td);
     }
-        
-    function Headers(list, selector) {
-        var columns = [];
-        var header = $('<tr/>');
-            
-        for (var i = 0; i < list.length; i++) {
-            var row = list[i];
-                
-            for (var k in row) {
-                if ($.inArray(k, columns) == -1) {
-                    columns.push(k);
-                        
-                    // Creating the header
-                    header.append($('<th/>').html(k));
-                }
-            }
-        }
-            
-        // Appending the header to the table
-        $(selector).append(header);
-            return columns;
-    }      
+
+}
+
+function add() {
+    var input = document.getElementsByTagName("input");
+    var table = document.getElementById("table");
+    var select = document.getElementById("select").value;
+
+
+
+    var tr = document.createElement('tr');
+    table.appendChild(tr);
+
+    
+    for ( let i = 0; i < input.length; i++) {
+        var td = document.createElement('td');
+        td.innerHTML = input[i].value;
+        tr.appendChild(td);
+    }
+
+    var td = document.createElement('td');
+    if ( select == 1 ) {
+        td.innerHTML = "男";
+    } else {
+        td.innerHTML = "女";
+    }
+    tr.appendChild(td);
+}
