@@ -3,44 +3,140 @@ var json = `[
     {"number":2,"name":"李四","gender":"女"},
     {"number":3,"name":"王五","gender":"男"}
 ]`;
-var obj = JSON.parse(json); 
-console.log(obj[0]); //输出“张三” 
+var obj = JSON.parse(json);
+console.log(obj[0].name); //輸出"張三"
+
+function limitNum() {
+  var number = document.getElementById("number");
+
+  re = /^[0-9]+$/;
+  if ( re.test(number.value) == false ) {
+    number.value = "";
+    alert("請輸入數字");
+  }
+}
 
 var initTh = document.getElementsByTagName('th');
 
-for ( let i = 0 ; i < obj.length; i++) {
-    var tr = document.createElement('tr');
-    table.appendChild(tr);
-    for ( let j = 0; j < initTh.length; j++) {
-        var td = document.createElement('td');
-        td.innerHTML = obj[i].number;
-        tr.appendChild(td);
-    }
+for (let i = 0; i < obj.length; i++) {
+  var tr = document.createElement('tr');
+  tr.id = i + 1;
+  table.appendChild(tr);
+  tmpTr = document.getElementsByTagName("tr");
 
+  // for (let j = 0; j < initTh.length - 1; j++) {
+    var td = document.createElement('td');
+    td.innerText = obj[i].number;
+    tr.appendChild(td);
+
+    td = document.createElement('td');
+    td.innerText = obj[i].name;
+    tr.appendChild(td);
+
+    td = document.createElement('td');
+    td.innerText = obj[i].gender;
+    tr.appendChild(td);
+  // }
+
+  // findId = document.querySelector()
+
+  var td4 = document.createElement('td');
+  tr.appendChild(td4);
+
+  var newP = document.createElement('p');
+  newP.innerText = "刪除";
+  td4.appendChild(newP);
+
+  newP.addEventListener("click", function(event) {
+    event.target.parentElement.parentElement.remove();
+  });
+
+  // newButton = document.createElement('button');
+  // newButton.innerText = "刪除"
+  // tr.appendChild(newButton);
+  // newButton.addEventListener("click", function () {
+  //   tmpTr[i+1].remove(newButton);
+  // });
 }
+
 
 function add() {
-    var input = document.getElementsByTagName("input");
-    var table = document.getElementById("table");
-    var select = document.getElementById("select").value;
 
+  if ( document.getElementById("number").value == "" ) {
+    alert("請輸入編號");
+    return 0;
+  }
 
+  if ( document.getElementById("name").value == "" ) {
+    alert("請輸入姓名");
+    return 0;
+  }
 
-    var tr = document.createElement('tr');
-    table.appendChild(tr);
+  if ( document.getElementById("select").value == "") {
+    alert("請選擇性別");
+    return 0;
+  }
 
-    
-    for ( let i = 0; i < input.length; i++) {
-        var td = document.createElement('td');
-        td.innerHTML = input[i].value;
-        tr.appendChild(td);
-    }
+  var input = document.getElementsByTagName("input");
+  var table = document.getElementById("table");
+  var select = document.getElementById("select").value;
+  var number = document.getElementById('number').value;
+  var allTrTag = document.getElementsByTagName("tr");
 
-    var td = document.createElement('td');
-    if ( select == 1 ) {
-        td.innerHTML = "男";
+  for ( let i = 0; i < allTrTag.length; i++ ) {
+    if ( number != allTrTag[i].id ) {
+      continue;
     } else {
-        td.innerHTML = "女";
+      alert("已重複拉肏!")
+      return 0;
     }
+  }
+
+  var tr = document.createElement('tr');
+  table.appendChild(tr);
+
+
+
+  for (let i = 0; i < input.length; i++) {
+    var td = document.createElement('td');
+    td.innerHTML = input[i].value;
     tr.appendChild(td);
+  }
+
+  var td = document.createElement('td');
+  if (select == 1) {
+    td.innerHTML = "男";
+  } else {
+    td.innerHTML = "女";
+  }
+  tr.appendChild(td);
+
+  var td4 = document.createElement('td');
+  tr.appendChild(td4);
+
+  var newP = document.createElement('p');
+  newP.innerText = "刪除";
+  td4.appendChild(newP);
+
+  newP.addEventListener("click", function() {
+    tr.remove();  
+  });
+
+  // newButton = document.createElement('td');
+  // newButton.innerHTML = "刪除";
+  // tr.appendChild(newButton);
+  // tr.id = number;
+  // newButton.addEventListener("click", function () {
+  //   tr.remove(newButton);
+  // });
 }
+
+
+// function p() {
+//   newTd = document.createElement('td');
+//   newTd.id = "123";
+//   newTd.innerText = "cool";
+  // td = document.getElementById("123");
+  // td.appendChild('p');
+
+// }

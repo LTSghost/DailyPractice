@@ -109,7 +109,7 @@ function bt1() {
 
     // ----------------account check
     re = /^[a-zA-Z][0-9_a-zA-Z]{1,17}$/;
-
+    
     if ( re.test(account) == false) {
         acCheck.innerHTML = "只能包含數字,字母,下劃線且得字母開頭"
     } else if (account.length < 6 || account.length > 18) {

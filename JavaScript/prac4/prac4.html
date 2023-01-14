@@ -9,8 +9,8 @@
 </head>
 <body>
     <div id="div">
-        <label class="t1" for="number">編號:</label><input type="text" id="number" autofocus placeholder="請輸入編號">
-        <label class="t1" for="number">姓名:</label><input type="text" id="name" autofocus placeholder="請輸入姓名">
+        <label class="t1" for="number">編號:</label><input type="text" id="number" onblur="limitNum()" placeholder="請輸入編號">
+        <label class="t1" for="number">姓名:</label><input type="text" id="name"  placeholder="請輸入姓名">
         <label class="t1" for="number">性別:</label>
         <select id="select" name="month" required>
             <option value="">-請選擇-</option>
@@ -18,20 +18,24 @@
             <option value="0">女</option>
         </select>
         <button onclick="add()">添加</button>
-        
-        <br>
 
-        <div class="tableDiv" >
+        <div class="tableDiv">
+          <h4>學生訊息表</h4>
             <table id="table">
                 <tr>
                     <th>編號</th>
                     <th>姓名</th>
                     <th>性別</th>
+                    <th>操作</th>
                 </tr>
             </table>
         </div>
 
+        <!-- <p id="p" onclick="p()">fff</p> -->
+
     </div>
+
+
 
     <script src="./prac4.js"></script>
 </body>
