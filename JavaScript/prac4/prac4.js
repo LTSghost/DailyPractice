@@ -6,6 +6,32 @@ var json = `[
 var obj = JSON.parse(json);
 console.log(obj[0].name); //輸出"張三"
 
+// async function fetchJson() {
+//   let response = await fetch('./data.json');
+
+//   console.log(response.status); // 200
+//   console.log(response.statusText); // OK
+
+//   if (response.status === 200) {
+//       let data = await response.json();
+//       var obj = data;
+//       // handle data
+//   }
+// }
+// fetchJson();
+
+console.log(obj);
+
+obj = 0;
+
+fetch('./data.json')
+    .then((response) => response.json())
+    .then(
+      (json) => 
+      callinit(json['data'])
+)
+
+
 function limitNum() {
   var number = document.getElementById("number");
 
@@ -16,13 +42,49 @@ function limitNum() {
   }
 }
 
-var initTh = document.getElementsByTagName('th');
+// var initTh = document.getElementsByTagName('th');
+
+function callinit(obj) {
+  for (let i = 0; i < obj.length; i++) {
+    var tr = document.createElement('tr');
+    tr.id = i + 1;
+    table.appendChild(tr);
+    // var tmpTr = document.getElementsByTagName("tr");
+  
+    // for (let j = 0; j < initTh.length - 1; j++) {
+      var td = document.createElement('td');
+      td.innerText = obj[i].number;
+      tr.appendChild(td);
+  
+      td = document.createElement('td');
+      td.innerText = obj[i].name;
+      tr.appendChild(td);
+  
+      td = document.createElement('td');
+      td.innerText = obj[i].gender;
+      tr.appendChild(td);
+    // }
+  
+    // findId = document.querySelector()
+  
+    var td4 = document.createElement('td');
+    tr.appendChild(td4);
+  
+    var newP = document.createElement('p');
+    newP.innerText = "刪除";
+    td4.appendChild(newP);
+  
+    newP.addEventListener("click", function(event) {
+      event.target.parentElement.parentElement.remove();
+    });
+  }
+}
 
 for (let i = 0; i < obj.length; i++) {
   var tr = document.createElement('tr');
   tr.id = i + 1;
   table.appendChild(tr);
-  tmpTr = document.getElementsByTagName("tr");
+  // var tmpTr = document.getElementsByTagName("tr");
 
   // for (let j = 0; j < initTh.length - 1; j++) {
     var td = document.createElement('td');
@@ -50,13 +112,6 @@ for (let i = 0; i < obj.length; i++) {
   newP.addEventListener("click", function(event) {
     event.target.parentElement.parentElement.remove();
   });
-
-  // newButton = document.createElement('button');
-  // newButton.innerText = "刪除"
-  // tr.appendChild(newButton);
-  // newButton.addEventListener("click", function () {
-  //   tmpTr[i+1].remove(newButton);
-  // });
 }
 
 
@@ -87,7 +142,7 @@ function add() {
     if ( number != allTrTag[i].id ) {
       continue;
     } else {
-      alert("已重複拉肏!")
+      alert("編號以重複!")
       return 0;
     }
   }
@@ -95,7 +150,7 @@ function add() {
   var tr = document.createElement('tr');
   table.appendChild(tr);
 
-
+  tr.id = number;
 
   for (let i = 0; i < input.length; i++) {
     var td = document.createElement('td');
