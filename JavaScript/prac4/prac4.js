@@ -1,29 +1,4 @@
-var json = `[
-    {"number":1,"name":"張三","gender":"男"},
-    {"number":2,"name":"李四","gender":"女"},
-    {"number":3,"name":"王五","gender":"男"}
-]`;
-var obj = JSON.parse(json);
-console.log(obj[0].name); //輸出"張三"
-
-// async function fetchJson() {
-//   let response = await fetch('./data.json');
-
-//   console.log(response.status); // 200
-//   console.log(response.statusText); // OK
-
-//   if (response.status === 200) {
-//       let data = await response.json();
-//       var obj = data;
-//       // handle data
-//   }
-// }
-// fetchJson();
-
-console.log(obj);
-
-obj = 0;
-
+// use fetch get local data.json file
 fetch('./data.json')
     .then((response) => response.json())
     .then(
@@ -31,7 +6,7 @@ fetch('./data.json')
       callinit(json['data'])
 )
 
-
+// constraint input number must digit
 function limitNum() {
   var number = document.getElementById("number");
 
@@ -42,51 +17,14 @@ function limitNum() {
   }
 }
 
-// var initTh = document.getElementsByTagName('th');
 
+// initial data.json to table
 function callinit(obj) {
   for (let i = 0; i < obj.length; i++) {
     var tr = document.createElement('tr');
     tr.id = i + 1;
     table.appendChild(tr);
-    // var tmpTr = document.getElementsByTagName("tr");
-  
-    // for (let j = 0; j < initTh.length - 1; j++) {
-      var td = document.createElement('td');
-      td.innerText = obj[i].number;
-      tr.appendChild(td);
-  
-      td = document.createElement('td');
-      td.innerText = obj[i].name;
-      tr.appendChild(td);
-  
-      td = document.createElement('td');
-      td.innerText = obj[i].gender;
-      tr.appendChild(td);
-    // }
-  
-    // findId = document.querySelector()
-  
-    var td4 = document.createElement('td');
-    tr.appendChild(td4);
-  
-    var newP = document.createElement('p');
-    newP.innerText = "刪除";
-    td4.appendChild(newP);
-  
-    newP.addEventListener("click", function(event) {
-      event.target.parentElement.parentElement.remove();
-    });
-  }
-}
 
-for (let i = 0; i < obj.length; i++) {
-  var tr = document.createElement('tr');
-  tr.id = i + 1;
-  table.appendChild(tr);
-  // var tmpTr = document.getElementsByTagName("tr");
-
-  // for (let j = 0; j < initTh.length - 1; j++) {
     var td = document.createElement('td');
     td.innerText = obj[i].number;
     tr.appendChild(td);
@@ -98,23 +36,14 @@ for (let i = 0; i < obj.length; i++) {
     td = document.createElement('td');
     td.innerText = obj[i].gender;
     tr.appendChild(td);
-  // }
-
-  // findId = document.querySelector()
-
-  var td4 = document.createElement('td');
-  tr.appendChild(td4);
-
-  var newP = document.createElement('p');
-  newP.innerText = "刪除";
-  td4.appendChild(newP);
-
-  newP.addEventListener("click", function(event) {
-    event.target.parentElement.parentElement.remove();
-  });
+  
+    var td4 = document.createElement('td');
+    tr.appendChild(td4);
+    addDelete(td4);
+  }
 }
 
-
+// click button to add input info in table
 function add() {
 
   if ( document.getElementById("number").value == "" ) {
@@ -133,11 +62,12 @@ function add() {
   }
 
   var input = document.getElementsByTagName("input");
-  var table = document.getElementById("table");
   var select = document.getElementById("select").value;
   var number = document.getElementById('number').value;
   var allTrTag = document.getElementsByTagName("tr");
 
+
+  // judge number duplicate or not
   for ( let i = 0; i < allTrTag.length; i++ ) {
     if ( number != allTrTag[i].id ) {
       continue;
@@ -149,15 +79,16 @@ function add() {
 
   var tr = document.createElement('tr');
   table.appendChild(tr);
-
   tr.id = number;
 
+  // input number and name to table
   for (let i = 0; i < input.length; i++) {
     var td = document.createElement('td');
     td.innerHTML = input[i].value;
     tr.appendChild(td);
   }
 
+  // select gender to table
   var td = document.createElement('td');
   if (select == 1) {
     td.innerHTML = "男";
@@ -166,32 +97,24 @@ function add() {
   }
   tr.appendChild(td);
 
+  // new delete to table
   var td4 = document.createElement('td');
   tr.appendChild(td4);
+  addDelete(td4);
+}
 
-  var newP = document.createElement('p');
+/**
+ * new delete to table
+ * @param td which td you wanted add delete.
+ */
+function addDelete(td) {
+  const newP = document.createElement('p');
   newP.innerText = "刪除";
-  td4.appendChild(newP);
+  td.appendChild(newP);
 
-  newP.addEventListener("click", function() {
-    tr.remove();  
+  newP.addEventListener("click", function(event) {
+    event.target.parentElement.parentElement.remove();
   });
-
-  // newButton = document.createElement('td');
-  // newButton.innerHTML = "刪除";
-  // tr.appendChild(newButton);
-  // tr.id = number;
-  // newButton.addEventListener("click", function () {
-  //   tr.remove(newButton);
-  // });
 }
 
 
-// function p() {
-//   newTd = document.createElement('td');
-//   newTd.id = "123";
-//   newTd.innerText = "cool";
-  // td = document.getElementById("123");
-  // td.appendChild('p');
-
-// }

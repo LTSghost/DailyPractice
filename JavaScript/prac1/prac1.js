@@ -19,4 +19,8 @@ function bt1() {
     }
 
     show.innerHTML = "合併結果 : " + sumText;
+
+    return sumText;
 }
+
+module.exports = bt1
