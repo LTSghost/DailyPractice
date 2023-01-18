@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../demo.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .box-title {
+            width: 500px;
+            margin: 10px auto 0;
+            display: flex;
+        }
+        
+        .box {
+            width: 500px;
+            margin: 10px auto 0;
+            display: flex;
+        }
+        
+        .box-item {
+            width: 450px;
+            height: 600px;
+        }
+        
+        .box-item>.item-title {
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .box-item>.item-list {
+            margin-top: 10px;
+            padding: 1px;
+            width: 90%;
+            height: 100%;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+        }
+        
+        .box-item {}
+        
+        .list-item {
+            line-height: 15px;
+            padding: 15px;
+        }
+        
+        .list-item img {
+            width: 90%;
+            height: auto;
+            padding: 5px;
+        }
+        
+        .box-item .list-item.active {
+            background-color: #eee;
+        }
+        
+        .box-btns {
+            margin: 0 20px;
+            width: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box-btns>.item-btn {
+            width: 100%;
+            height: 26px;
+            margin-bottom: 6px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 26px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-title">
+        <label>图片插入位置:</label>
+        <label><input type="radio" name="operations" value="append" checked="checked"/>append</label>
+        <label><input type="radio" name="operations" value="prepend"/>prepend</label>
+    </div>
+    <div class="box">
+        <div class="box-item">
+            <div class="item-title">可选项</div>
+            <ul class="item-list jq-leftbox">
+                <li>
+                    <img src="./image.1.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="box-btns">
+            <div class="item-btn jq-right">&gt;</div>
+            <div class="item-btn jq-left">&lt;</div>
+            <div class="item-btn jq-rightall">&gt;&gt;</div>
+            <div class="item-btn jq-leftall">&lt;&lt;</div>
+        </div>
+        <div class="box-item">
+            <div class="item-title">已选项</div>
+            <ul class="item-list jq-rightbox">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+
+</html>
