@@ -1,5 +1,7 @@
 var ulLeft = []
 var ulRight = []
+// HTML onload. Get local .json file and according json correspond images 
+// to display on ulLeft.
 $(function(){
     // change SimpleChinese to TranditionalChinese
     $("div.box-title > label:nth-child(1)").text("圖片插入位置:");
@@ -8,9 +10,9 @@ $(function(){
     
     $.getJSON( "data.json", function( json ) {
         data = json['data']
-        // console.log(data)
-        // console.log(data[0])
-        // console.log(data[0][1])
+        // console.log(data) // dict ({1: 'image.1.jpg'}...)
+        // console.log(data[0]) // {1:'image.1.jpg'}
+        // console.log(data[0][1]) // data[index][key] ex. data[0][1] = 'image.1.jpg'
 
         $.each( data, function(key, val){
             ulLeft.push(data[key][key+1])
