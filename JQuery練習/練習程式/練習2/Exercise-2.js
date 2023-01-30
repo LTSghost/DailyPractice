@@ -19,16 +19,33 @@ $(function(){
         // new li > img
         $.each(ulLeft, function(i, val){
             i++  // let index start from 0 to 1
-            $li = $("<li id=\"" + i + "\" ></li>");
+            // $li = $("<li id=\"" + i + "\" ></li>");
+            $li = $("<li id=\"pL" + i + "\" ></li>");
             newLi = $("ul.item-list.jq-leftbox").append($li);
 
             $img = $("<img src=\"" + val + "\">");
-            $("ul.item-list.jq-leftbox > li#\\3" + i + "").append($img)
+            // $("ul.item-list.jq-leftbox > li#\\3" + i + "").append($img)
+            $("ul.item-list.jq-leftbox > li#pL\\3" + i + "").append($img)
 
-            $("ul > li").get(0).click(function(){
-                alert="哭阿"
-            })
+            $("ul.item-list.jq-leftbox > li#pL\\3" + i + "").click(function(){
+                if ($(this).hasClass( "bgColor" )) {
+                    $(this).removeAttr('class');
+                    return 0;
+                }
+                $(this).addClass("bgColor")
+            });
+
+            
         })
+
+
+        // $("#p1").click(function(){
+        //     if ($( "#p1" ).hasClass( "bgColor" )) {
+        //         $("#p1").removeAttr('class');
+        //         return 0;
+        //     }
+        //     $(this).addClass("bgColor")
+        // });
         
         // $.each( data, function( key, val ) {
         //     key += 1
@@ -41,49 +58,191 @@ $(function(){
 
         //     console.log(newLi.get(0))
         // });
+        
     });
+
 })
 
-// put all left to right  "append"
+// 問題 無法給事件
+// $("#p1").click(function(){
+//     if ($( "#p1" ).hasClass( "bgColor" )) {
+//         $("#p1").removeAttr('class');
+//         return 0;
+//     }
+//     $(this).addClass("bgColor")
+// });
+
+
+// $( ".item-title" ).addClass("bgColor");
+
+// put all left to right  
 $(".jq-rightall").click(function(){
-    // remove left origin
-    $("ul.item-list.jq-leftbox > li").remove();
+    var inputCheck = $("input:checked");
 
-    // $.each(ulLeft, function(i,val){
-    //     ulRight.push(val);
+    if (inputCheck.val() == "append") {
+        // remove left origin
+        $("ul.item-list.jq-leftbox > li").remove();
+
+        // $.each(ulLeft, function(i,val){
+        //     ulRight.push(val);
+        // })
+
+        // "append"
+        $.each(ulLeft, function(){
+            ulRight.push(ulLeft.shift())
+        })
+
+        show(ulRight);
+    } else {
+        // remove left origin
+        $("ul.item-list.jq-leftbox > li").remove();
+
+        // "prepend"
+        $.each(ulLeft, function(){
+            ulRight.unshift(ulLeft.pop())
+        })
+
+        show(ulRight);
+    }
+
+})
+
+// put all right to left
+$(".jq-leftall").click(function(){
+    var inputCheck = $("input:checked");
+
+    if (inputCheck.val() == "append") {
+        // remove right element
+        $("ul.item-list.jq-rightbox > li").remove();
+        
+        // "append"
+        $.each(ulRight, function(){
+            ulLeft.push(ulRight.shift())
+        })
+        show(ulLeft);
+    } else {
+        // remove right element
+        $("ul.item-list.jq-rightbox > li").remove();
+
+        // "prepend"
+        $.each(ulRight, function(){
+            ulLeft.unshift(ulRight.pop())
+        })
+        show(ulLeft);
+    }
+
+
+})
+
+// lock left to right  
+$(".jq-right").click(function(){
+    var inputCheck = $("input:checked");
+    var count = 0;
+    all = $(".jq-leftbox > li")
+
+    // $.each(all,function(i, val){
+    //     if (val.className == "bgColor") { 
+    //         count ++;
+    //     }
     // })
+    // if (count > 1) {
+    //     alert("只能選擇一個")
+    //     return 0;
+    // }
 
-    $.each(ulLeft, function(){
-        ulRight.push(ulLeft.shift())
-    })
+    if (inputCheck.val() == "append") {
+        // "append"
+        $.each(all,function(i, val){
+            if (val.className == "bgColor") {
+                i -= count;
+                console.log(i);
+                removeL = ulLeft.splice(i,1);
+                ulRight.push(removeL)
+                console.log("ulLeft = " + ulLeft)
+                console.log("ulRight = " + ulRight)
+                count++;
+            }
+        })
+    } else {
+        var tempArr = []
+        // "prepend"
+        $.each(all,function(i, val){
+            if (val.className == "bgColor") {
+                i -= count;
+                console.log(i);
+                removeL = ulLeft.splice(i,1);
+                console.log(removeL);
+                // ulRight.unshift(removeL)
+                console.log("ulLeft = " + ulLeft);
+                console.log("ulRight = " + ulRight);
+                tempArr.push(removeL);
+                console.log(tempArr);
+                count++;
+            }
+        })
+        $.each(tempArr,function(){
+            ulRight.unshift(tempArr.pop())
+        })
+        
+    }
+
+
+    show(ulLeft);
     show(ulRight);
 })
 
-// put all right to left  "append"
-$(".jq-leftall").click(function(){
-    // remove right element
-    $("ul.item-list.jq-rightbox > li").remove();
-
-    // $.each(ulLeft, function(i,val){
-    //     ulRight.push(val);
-    // })
-
-    $.each(ulRight, function(){
-        ulLeft.push(ulRight.shift())
-    })
-    show(ulLeft);
-})
-
-// lock one left to right
-$(".jq-right").click(function(){
-
-})
-
-// lock one right to left
+// lock right to left
 $(".jq-left").click(function(){
-    
+    var inputCheck = $("input:checked");
+    var count = 0;
+    all = $(".jq-rightbox > li")
+
+    // $.each(all,function(i, val){
+    //     if (val.className == "bgColor") { 
+    //         count ++;
+    //     }
+    // })
+    // if (count > 1) {
+    //     alert("只能選擇一個")
+    //     return 0;
+    // }
+
+    if (inputCheck.val() == "append") {
+        $.each(all,function(i, val){
+            if (val.className == "bgColor") { 
+                i -= count;
+                removeR = ulRight.splice(i,1);
+                ulLeft.push(removeR)
+                console.log("ulLeft = " + ulLeft)
+                console.log("ulRight = " + ulRight)
+                count++;
+            }
+        })
+    } else {
+        var tempArr = []
+        // "prepend"
+        $.each(all,function(i, val){
+            if (val.className == "bgColor") { 
+                i -= count;
+                removeR = ulRight.splice(i,1);
+                // ulLeft.unshift(removeR);
+                tempArr.push(removeR);
+                count++;
+            }
+        })
+        $.each(tempArr,function(){
+            ulLeft.unshift(tempArr.pop())
+        })
+    }
+
+
+    show(ulLeft);
+    show(ulRight);
 })
 
+// $('#'+1).click(function() {
+//     $(this).css("background","yellow");
+// });
 
 // according array to show element
 function show(ul) {
@@ -94,11 +253,19 @@ function show(ul) {
         // append right new element according ulRight array
         $.each(ul, function(i,val){
             i++
-            $li = $("<li id=\"" + i + "\" ></li>");
+            $li = $("<li id=\"pR" + i + "\" ></li>");
             newLi = $("ul.item-list.jq-rightbox").append($li);
 
             $img = $("<img src=\"" + val + "\">");
-            $("ul.item-list.jq-rightbox > li#\\3" + i + "").append($img)
+            $("ul.item-list.jq-rightbox > li#pR\\3" + i + "").append($img)
+
+            $("ul.item-list.jq-rightbox > li#pR\\3" + i + "").click(function(){
+                if ($(this).hasClass( "bgColor" )) {
+                    $(this).removeAttr('class');
+                    return 0;
+                }
+                $(this).addClass("bgColor")
+            });
         })
     } else {
         // remove left origin element
@@ -107,11 +274,19 @@ function show(ul) {
         // append left new element according ulLeft array
         $.each(ul, function(i,val){
             i++
-            $li = $("<li id=\"" + i + "\" ></li>");
+            $li = $("<li id=\"pL" + i + "\" ></li>");
             newLi = $("ul.item-list.jq-leftbox").append($li);
 
             $img = $("<img src=\"" + val + "\">");
-            $("ul.item-list.jq-leftbox > li#\\3" + i + "").append($img)
+            $("ul.item-list.jq-leftbox > li#pL\\3" + i + "").append($img)
+
+            $("ul.item-list.jq-leftbox > li#pL\\3" + i + "").click(function(){
+                if ($(this).hasClass( "bgColor" )) {
+                    $(this).removeAttr('class');
+                    return 0;
+                }
+                $(this).addClass("bgColor")
+            });
         })
     }
 }
