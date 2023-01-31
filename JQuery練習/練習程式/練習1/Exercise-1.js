@@ -7,9 +7,9 @@ $(function(){
     // display left #sample-dom
     $.get('./Exercise-1-read.txt', function(data){
         $('#sample-dom').append(data);
+        $("#sample-dom > p").text("請使用我們的jQuery 選擇器檢測器來演示不同的選擇器〪");
     });
 
-    $("#sample-dom > p").text("請使用我們的jQuery 選擇器檢測器來演示不同的選擇器〪");
 
     // display right #sample-dom-source
     $.get('./Exercise-1-read.txt', function(data) {
@@ -39,8 +39,6 @@ $("#button-apply").click(function () {
 
             $(selectTableTd2[n]).css("background-color","green");
 
-            // $("#jquery-statement").text("jQuery語句: $(\"" + selectorText + "\").addClass(\"found-element\");");
-
             $("#jquery-statement").text("jQuery語句: " + Td2 + ".addClass(\"found-element\");");
 
             // string process
@@ -48,14 +46,15 @@ $("#button-apply").click(function () {
             Td2 = Td2.replace("\")","")
             console.log(Td2)
 
-            // const founded = $("#sample-dom").find(Td2);
+            // search all class box-small matched Td2 element
             founded = $(".box-small").find(Td2);
+            // const founded = $("#sample-dom").find(Td2);
 
             console.log(founded)
 
             founded.addClass("found-element");
 
-            $("#resulting-elements-count").text("匹配結果:"+ " " + founded.length)
+            $("#resulting-elements-count").text("匹配結果: " + founded.length)
 
             var alltext = "";
             $.each(founded, function(n, elem){
@@ -83,8 +82,6 @@ $("#button-apply").click(function () {
 
         // addClass in matched element
         founded.addClass("found-element");
-
-        // $("#jquery-statement").text("jQuery語句: $(\"" + $("#selector").val() + "\").addClass(\"found-element\");");
 
         $("#resulting-elements-count").text("匹配結果:"+ " " + founded.length)
 

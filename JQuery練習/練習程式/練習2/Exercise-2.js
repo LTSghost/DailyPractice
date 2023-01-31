@@ -21,12 +21,10 @@ $(function(){
         // new li > img
         $.each(ulLeft, function(i, val){
             i++  // let index start from 0 to 1
-            // $li = $("<li id=\"" + i + "\" ></li>");
             $li = $("<li id=\"pL" + i + "\" ></li>");
             newLi = $("ul.item-list.jq-leftbox").append($li);
 
             $img = $("<img src=\"" + val + "\">");
-            // $("ul.item-list.jq-leftbox > li#\\3" + i + "").append($img)
             $("ul.item-list.jq-leftbox > li#pL\\3" + i + "").append($img)
 
             $("ul.item-list.jq-leftbox > li#pL\\3" + i + "").click(function(){
@@ -37,45 +35,11 @@ $(function(){
                 $(this).addClass("bgColor")
             });
 
-            
         })
 
-
-        // $("#p1").click(function(){
-        //     if ($( "#p1" ).hasClass( "bgColor" )) {
-        //         $("#p1").removeAttr('class');
-        //         return 0;
-        //     }
-        //     $(this).addClass("bgColor")
-        // });
-        
-        // $.each( data, function( key, val ) {
-        //     key += 1
-        //     $li = $("<li id=\"" + key + "\" ></li>");
-        //     newLi = $("ul.item-list.jq-leftbox").append($li);
-            
-        //     $img = $("<img src=\"" + data[key-1][key] + "\">");
-        //     $("ul.item-list.jq-leftbox > li#\\3" + key + "").append($img)
-        //     console.log($img)
-
-        //     console.log(newLi.get(0))
-        // });
-        
     });
 
 })
-
-// 問題 無法給事件
-// $("#p1").click(function(){
-//     if ($( "#p1" ).hasClass( "bgColor" )) {
-//         $("#p1").removeAttr('class');
-//         return 0;
-//     }
-//     $(this).addClass("bgColor")
-// });
-
-
-// $( ".item-title" ).addClass("bgColor");
 
 // put all left to right  
 $(".jq-rightall").click(function(){
@@ -84,10 +48,6 @@ $(".jq-rightall").click(function(){
     if (inputCheck.val() == "append") {
         // remove left origin
         $("ul.item-list.jq-leftbox > li").remove();
-
-        // $.each(ulLeft, function(i,val){
-        //     ulRight.push(val);
-        // })
 
         // "append"
         $.each(ulLeft, function(){
@@ -157,11 +117,8 @@ $(".jq-right").click(function(){
         $.each(all,function(i, val){
             if (val.className == "bgColor") {
                 i -= count;
-                console.log(i);
                 removeL = ulLeft.splice(i,1);
-                ulRight.push(removeL)
-                console.log("ulLeft = " + ulLeft)
-                console.log("ulRight = " + ulRight)
+                ulRight.push(removeL[0])
                 count++;
             }
         })
@@ -177,7 +134,7 @@ $(".jq-right").click(function(){
                 // ulRight.unshift(removeL)
                 console.log("ulLeft = " + ulLeft);
                 console.log("ulRight = " + ulRight);
-                tempArr.push(removeL);
+                tempArr.push(removeL[0]);
                 console.log(tempArr);
                 count++;
             }
@@ -214,7 +171,7 @@ $(".jq-left").click(function(){
             if (val.className == "bgColor") { 
                 i -= count;
                 removeR = ulRight.splice(i,1);
-                ulLeft.push(removeR)
+                ulLeft.push(removeR[0])
                 console.log("ulLeft = " + ulLeft)
                 console.log("ulRight = " + ulRight)
                 count++;
@@ -228,7 +185,7 @@ $(".jq-left").click(function(){
                 i -= count;
                 removeR = ulRight.splice(i,1);
                 // ulLeft.unshift(removeR);
-                tempArr.push(removeR);
+                tempArr.push(removeR[0]);
                 count++;
             }
         })
@@ -241,10 +198,6 @@ $(".jq-left").click(function(){
     show(ulLeft);
     show(ulRight);
 })
-
-// $('#'+1).click(function() {
-//     $(this).css("background","yellow");
-// });
 
 // according array to show element
 function show(ul) {
