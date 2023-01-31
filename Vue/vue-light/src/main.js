@@ -124,12 +124,13 @@ vm.message = '30CM';
 // vm.quantity = 5;
 
 const dataObj = {
-    message: "render message on app2"
+    message: "render message on app2",
+    h1ID: "h1"
   };
   
 
 const vm2 = Vue.createApp({
-    template: `<h1>{{ message }}</h1>`,
+    template: `<h1 id=\"{{ h1ID }}\">{{ message }}</h1>`,
     data () {
         return {
             ...dataObj
