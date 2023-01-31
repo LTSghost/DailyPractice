@@ -1,4 +1,5 @@
 //-----------------------------------version 1
+/*
 // const { createApp, ref } = Vue;
 
 // const vm = createApp({
@@ -15,8 +16,10 @@
 // })
 
 // vm.mount('#app');
+*/
 
 //-----------------------------------version 2
+/*
 // const { createApp } = Vue;
 
 // createApp({
@@ -30,10 +33,41 @@
 //         }
 //     }
 // }).mount('#app');
+*/
 
 //-----------------------------------version 3
 const vm = Vue.createApp({
-    // template: `{{ greeting }} 朋友`,
+    template: `
+        {{ message }} 豪棒棒
+        <br>
+        雞腿便當 : {{ price }}
+        <br>
+        數量 : {{ quantity }}
+        <br>
+        <br>
+        總額1 : {{ priceTotalMethods(1) }}
+        <br>
+        總額2 : {{ priceTotalMethods(1) }}
+        <br>
+        總額3 : {{ priceTotalMethods(1) }}
+        <br>
+        <br>
+        總額4 : {{ priceTotalComputed }}
+        <br>
+        總額5 : {{ priceTotalComputed }}
+        <br>
+        總額6 : {{ priceTotalComputed }}
+        <br>
+        <br>
+        <!-- <p>1 日幣 = 0.23 台幣</p>
+        <div>台幣 <input type="text" v-model="twd" v-on:input="twd2jpy"></div>
+        <div>日幣 <input type="text" v-model="jpy" v-on:input="jpy2twd"></div> -->
+
+        <p>1 日幣 = 0.23台幣 ; 1美元 = 30.28台幣</p>
+        <div>台幣 <input type="text" v-model="twd"></div>
+        <div>日幣 <input type="text" v-model="jpy"></div>
+        <div>美元 <input type="text" v-model="usd"></div>
+        `,
     data () {
         return {
             greeting: '您好阿', 
@@ -84,6 +118,21 @@ const vm = Vue.createApp({
     }
 }).mount('#app');
 
-// vm.message = '30CM';
+vm.$data.price = 90;
+
+vm.message = '30CM';
 // vm.quantity = 5;
 
+const dataObj = {
+    message: "render message on app2"
+  };
+  
+
+const vm2 = Vue.createApp({
+    template: `<h1>{{ message }}</h1>`,
+    data () {
+        return {
+            ...dataObj
+        }
+    }
+}).mount('#app2');

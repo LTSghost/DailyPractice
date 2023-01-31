@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery-1.11.3.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .box-title {
+            width: 500px;
+            margin: 10px auto 0;
+            display: flex;
+        }
+        
+        .box {
+            width: 500px;
+            margin: 10px auto 0;
+            display: flex;
+        }
+        
+        .box-item {
+            width: 450px;
+            height: 600px;
+        }
+        
+        .box-item>.item-title {
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .box-item>.item-list {
+            margin-top: 10px;
+            padding: 1px;
+            width: 90%;
+            height: 100%;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+        }
+        
+        .box-item {}
+        
+        .list-item {
+            line-height: 15px;
+            padding: 15px;
+        }
+        
+        .list-item img {
+            width: 90%;
+            height: auto;
+            padding: 5px;
+        }
+        
+        .box-item .list-item.active {
+            background-color: #eee;
+        }
+        
+        .box-btns {
+            margin: 0 20px;
+            width: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box-btns>.item-btn {
+            width: 100%;
+            height: 26px;
+            margin-bottom: 6px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 26px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-title">
+        <label>图片插入位置:</label>
+        <label><input type="radio" name="operations" value="append" checked="checked"/>append</label>
+        <label><input type="radio" name="operations" value="prepend"/>prepend</label>
+    </div>
+    <div class="box">
+        <div class="box-item">
+            <div class="item-title">可选项</div>
+            <ul class="item-list jq-leftbox">
+            </ul>
+        </div>
+        <div class="box-btns">
+            <div class="item-btn jq-right">&gt;</div>
+            <div class="item-btn jq-left">&lt;</div>
+            <div class="item-btn jq-rightall">&gt;&gt;</div>
+            <div class="item-btn jq-leftall">&lt;&lt;</div>
+        </div>
+        <div class="box-item">
+            <div class="item-title">已选项</div>
+            <ul class="item-list jq-rightbox">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            let _leftbox = $('.jq-leftbox'),
+                _rightbox = $('.jq-rightbox');
+
+            var txtSource = '[{"src": "./image.1.jpg", "id": "img-1"}, ' +
+                ' {"src": "./image.2.jpg", "id": "img-2"}, ' +
+                ' {"src": "./image.3.jpg", "id": "img-3"}, ' +
+                ' {"src": "./image.4.jpg", "id": "img-4"}, ' +
+                ' {"src": "./image.5.jpg", "id": "img-5"}, ' +
+                ' {"src": "./image.6.jpg", "id": "img-6"}]';
+            var sourceArray = JSON.parse(txtSource);
+            var sourceContent = '';
+            for (var i = 0; i < sourceArray.length; i++) {
+                sourceContent += '<li class="list-item">' +
+                    '    <img id="' + sourceArray[i].id + '" src="' + sourceArray[i].src + '">' +
+                    '</li>';
+            }
+            $('.jq-leftbox').append(sourceContent);
+
+            // 点击每个列表实现选中效果
+            $('.list-item').click(function() {
+                $(this).toggleClass('active');
+            });
+
+            $('.jq-right').click(function() {
+                var operation = $('[name=operations]:checked').val();
+                if (operation == 'prepend') {
+                    _rightbox.prepend(_leftbox.find('.list-item.active'));
+                } else {
+                    _rightbox.append(_leftbox.find('.list-item.active'));
+                }
+
+                $('.jq-rightbox .list-item').removeClass('active');
+            });
+
+            $('.jq-left').click(function() {
+                var operation = $('[name=operations]:checked').val();
+                if (operation == 'prepend') {
+                    _leftbox.prepend(_rightbox.find('.list-item.active'));
+                } else {
+                    _leftbox.append(_rightbox.find('.list-item.active'));
+                }
+
+                $('.jq-leftbox .list-item').removeClass('active');
+            });
+
+            $('.jq-rightall').click(function() {
+                _rightbox.append(_leftbox.find('.list-item'));
+
+                $('.jq-rightbox .list-item').removeClass('active');
+            });
+
+            $('.jq-leftall').click(function() {
+                _leftbox.append(_rightbox.find('.list-item'));
+
+                $('.jq-leftbox .list-item').removeClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
