@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue_first_prac1</title>
+    <link rel="stylesheet" href="./main.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        字串1: <input id="text1" type="text" v-model="input1">
+        <br>
+        字串2: <input id="text2" type="text" v-model="input2">
+        <br>
+        <div style="padding-left:80px; padding-top: 5px;">
+            <!-- <button id="bt1" @click="bt1()">合併</button> -->
+        </div>
+        <p v-text="msg" id="show"></p>
+        <p>{{ reverseMethods() }}</p>
+        <p>{{ reverseComputed }}</p>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>

@@ -17,8 +17,38 @@
 
     <div id="app2">
         {{ message }} 豪棒棒~
+        <p v-bind:id="customId">...</p>
+        <button v-bind:id="btn1Id" v-bind:disabled="isBtnDisabled" onclick="btn()">click me 1</button>
+        <button disabled="false" onclick="btn()">click me 2</button>
+        <button :id="btn3Id" onclick="btn()">click me 3</button>
+
+        <br>
+        <label>Input Message:</label><input v-model="inputMessage" placeholder="I'm empty">
+
+
+        <p>
+            <span>Multiline message is:</span> {{ messageTA }}
+        </p>
+        <br>
+        <textarea v-model="messageTA" placeholder="add multiple lines"></textarea>
+        <!-- 雖然會顯示，但不會同步更新 -->
+        <br>
+        <textarea placeholder="add multiple lines">{{ messageTA }}</textarea>
+
+        <br>
+        <select v-model="selected">
+            <option disabled value="">請選擇</option>
+            <option>台北</option>
+            <option>台中</option>
+            <option>台南</option>
+        </select>
+        <br>
+        <br>
+        <br>
     </div>
-    
-    <script type="module" src="main.js"></script>
+
+
+
+    <script src="main.js"></script>
 </body>
 </html>

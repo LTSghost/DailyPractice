@@ -125,15 +125,26 @@ vm.message = '30CM';
 
 const dataObj = {
     message: "render message on app2",
-    h1ID: "h1"
+    h1ID: "h1",
+    customId: 'item-id-1',
+    isBtnDisabled: false,
+    btn1Id: "btn1",
+    btn3Id: "btn3",
+    inputMessage: "Hello, Howard~",
+    messageTA:"TextArea ooo",
+    selected: ""
   };
   
 
 const vm2 = Vue.createApp({
-    template: `<h1 id=\"{{ h1ID }}\">{{ message }}</h1>`,
+    // template: `<h1 id=\"{{ h1ID }}\">{{ message }}</h1>`,
     data () {
         return {
             ...dataObj
         }
     }
 }).mount('#app2');
+
+function btn(){
+    alert("點屁")
+}
