@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue_First_prac3</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <style>
+        /* .active:active{
+            font-weight: bold;
+            color: red;
+        } */
+        /* a:visited{
+            color: darkblue;
+            font-weight: bold;
+        } */
+        a{
+            font-size: 3ch;
+        }
+        .router-link-active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+            
+            <!-- <div :style="div"> -->
+            <div>
+                <router-link to="/">首頁</router-link>&nbsp;
+                <!-- <router-link to="/test1"  :class="[isActive ? activeClass : '']">測試畫面1</router-link>&nbsp; -->
+                <router-link to="/test1">測試畫面1</router-link>&nbsp;
+                <router-link to="/test2">測試畫面2</router-link>&nbsp;
+                <router-link to="/test3">測試畫面3</router-link>&nbsp;
+                <router-link to="/test4">測試畫面4</router-link>&nbsp;
+            </div>
+
+            <router-view></router-view>
+            <!-- <p :style="pStyle" v-text="p"></p> -->
+    </div>
+    
+    <script src="./prac3.js"></script>
+</body>
+</html>

@@ -9,7 +9,35 @@
 </head>
 <body>
     <div id="app">
-        
+        <form @submit.prevent="validateForm()" action="">
+            <p v-html="p" :style="fontBlue"></p>
+            <fieldset >
+                <legend v-text="legend"></legend>
+                <div>
+                    <label :style="label">帳號：</label>
+                    <input type="text" v-model="account">
+                    <span :style="error" v-text="acErr"></span>
+                </div>
+                <div>
+                    <label :style="label">密碼：</label>
+                    <input type="password" v-model="pwd">
+                    <span :style="error" v-text="pwdErr"></span>
+                </div>
+                <div>
+                    <label :style="label">Email：</label>
+                    <input type="text" v-model="email">
+                    <span :style="error" v-text="emailErr"></span>
+                </div>
+                <div>
+                    <label :style="label">手機：</label>
+                    <input type="text" v-model="mobile" maxlength="11">
+                    <span :style="error" v-text="mobileErr"></span>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <input type="submit" value="提交">
+                </div>
+            </fieldset>
+        </form>
     </div>
 
     <script src="./prac2.js"></script>
