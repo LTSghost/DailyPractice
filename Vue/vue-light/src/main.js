@@ -74,7 +74,7 @@ const vm = Vue.createApp({
             message: 'Hello Vue 3.0!',
             price : 100,
             quantity : 8,
-            twd : 1
+            twd : 1,
         }
     },
     computed: {
@@ -103,7 +103,6 @@ const vm = Vue.createApp({
         // priceTotal : function () {
         //     return this.price * this.quantity
         // }
-
         priceTotalMethods (add) {
             console.log('methods');
             return this.price * this.quantity + add;
@@ -132,7 +131,9 @@ const dataObj = {
     btn3Id: "btn3",
     inputMessage: "Hello, Howard~",
     messageTA:"TextArea ooo",
-    selected: ""
+    selected: "",
+    amount: 1,
+    count: 0
   };
   
 
@@ -142,7 +143,14 @@ const vm2 = Vue.createApp({
         return {
             ...dataObj
         }
-    }
+    },
+    methods: {
+        plus(amount,event){
+            console.log(event.target);
+            btnTar = event.target;
+            this.count += amount;
+        },
+    },
 }).mount('#app2');
 
 function btn(){

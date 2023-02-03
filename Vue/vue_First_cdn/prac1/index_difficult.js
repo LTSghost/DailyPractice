@@ -1,6 +1,17 @@
 const Input = {
-    props: ["number","id"],
-    template: `字串{{ number }}: <input :id=id>`,
+    props: ["number","id","modelValue","parentMsg1"],
+    template: 
+    `
+    <!-- :modelValue=modVal @update:modelValue="modVal = $event" -->
+    字串{{ number }}: <input :id=id :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
+    <div> 從 props 來的 parentMsg1 ==> {{ parentMsg1 }} </div>
+    <div> 自己的 msg ==> {{ msg }} </div>
+    `,
+    data() {
+        return {
+            msg: '這是子元件的 msg'
+        }
+    },
   };
 
 const Button = {
@@ -24,7 +35,10 @@ const app = Vue.createApp({
     data() {
         return {
             input3: "abcd",
-            input4: "123456"
+            input4: "123456",
+            input1: "abcd",
+            input2: "12345",
+            msg: '這是外層元件的 msg'
         }
     },
     computed: {
@@ -32,7 +46,7 @@ const app = Vue.createApp({
         // [...input3].map((c,i) => c + (this.input4[i] || "")).join("") + input4.slice(input3.length)
         ,
         test1() {
-            return this.input3 + this.input4
+            return this.input1 + this.input2
         }
     },
     components: {

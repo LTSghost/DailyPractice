@@ -1,3 +1,11 @@
-p{
-    color: blue;
+a{
+    font-size: 3ch;
+    color: darkblue;
+    font-weight: bold;
 }
+.linkRed{
+    color: red;
+}
+/* .router-link-active{
+    color: red;
+} */

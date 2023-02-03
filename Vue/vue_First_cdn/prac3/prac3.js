@@ -75,6 +75,7 @@ const routes = [{
     path: '/test4',
     component: Test4
 }, ]
+
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes,
@@ -85,15 +86,55 @@ const app = Vue.createApp({
         return {
             p:"",
             div:{
+                width: "fit-content",
                 'background-color': 'lightgray'
-            },            
-            isActive: true,
-            activeClass: 'active'
+            },
+            // specify URL to add class .linkRed
+            homeIsActive: window.location.href.split("#")[1] == routes[0].path,
+            test1IsActive: window.location.href.split("#")[1] == routes[1].path,
+            test2IsActive: window.location.href.split("#")[1] == routes[2].path,
+            test3IsActive: window.location.href.split("#")[1] == routes[3].path,
+            test4IsActive: window.location.href.split("#")[1] == routes[4].path,
+            activeClass: 'linkRed'
         }
     },
     methods: {
-      changeLocation(){
-        this.p = window.location.href
-      }  
+        detectHome(){
+            this.homeIsActive = true,
+            this.test1IsActive = false,
+            this.test2IsActive = false,
+            this.test3IsActive = false,
+            this.test4IsActive = false
+        },
+        detectTest1(){
+            this.test1IsActive = true,
+            this.homeIsActive = false,
+            this.test2IsActive = false,
+            this.test3IsActive = false,
+            this.test4IsActive = false
+        },
+        detectTest2(){
+            this.test2IsActive = true,
+            this.homeIsActive = false,
+            this.test1IsActive = false,
+            this.test3IsActive = false,
+            this.test4IsActive = false
+        },
+        detectTest3(){
+            this.test3IsActive = true,
+            this.homeIsActive = false,
+            this.test1IsActive = false,
+            this.test2IsActive = false,
+            this.test4IsActive = false
+        },
+        detectTest4(){
+            this.test4IsActive = true,
+            this.homeIsActive = false,
+            this.test1IsActive = false,
+            this.test2IsActive = false,
+            this.test3IsActive = false
+        }
+    },
+    computed: {
     },
 }).use(router).mount("#app")

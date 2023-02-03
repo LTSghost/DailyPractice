@@ -45,6 +45,11 @@
         <br>
         <br>
         <br>
+
+        <p><input v-model.number="amount"></p>
+        <p>Count: {{ count }}</p>
+        <button @click="plus(amount,$event)">Plus</button>
+
     </div>
 
 

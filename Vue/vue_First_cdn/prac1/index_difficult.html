@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue_first_prac1</title>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./prac1.css">
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
     <div id="app">
-        <component-input number="1" id="text1"></component-input>
+
+        <h3>{{ msg }}</h3>
+
+        <component-input number="1" id="text1" :parent-msg1="msg" v-model="input1"></component-input>
         <br>
-        <component-input number="2" id="text2"></component-input>
+        <component-input number="2" id="text2" parent-msg2="msg2" v-model="input2" ></component-input>
         <component-button text="合併"></component-button>
-        <p v-text="msg"></p>
+
+        <h3>{{ modVal }}</h3>
+
+        <!-- <p v-text="msg"></p> -->
         <br>
         字串3: <input id="text1" type="text" v-model.trim="input3">
         <br>
@@ -24,6 +30,6 @@
         <p>{{ test1 }}</p>
     </div>
 
-    <script src="./main_difficult.js"></script>
+    <script src="./index_difficult.js"></script>
 </body>
 </html>
