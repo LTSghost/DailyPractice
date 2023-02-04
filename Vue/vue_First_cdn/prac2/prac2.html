@@ -9,7 +9,8 @@
 </head>
 <body>
     <div id="app">
-        <form @submit.prevent="validateForm()" action="">
+        <!-- @submit.prevent 畫面不會重新載入 -->
+        <form @submit.prevent="validateForm()" action="" method="post">
             <p v-html="p" :style="fontBlue"></p>
             <fieldset >
                 <legend v-text="legend"></legend>

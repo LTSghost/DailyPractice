@@ -11,15 +11,15 @@
     <div id="app">
         <form onsubmit="return validateForm()" action="">
             <p v-html="p" :style="fontBlue"></p>
-            <fieldset >
+            <fieldset>
                 <legend v-text="legend"></legend>
                 <!-- <li v-for="(value, key, index) in object"> -->
-                <div v-for="(value,key) in object" >
-                    <label :style="label">{{ value[0] }}</label>
-                    <input :type=value[1] :name=key v-model="value.name">
-                    <span :style="fontRed" :id=value[2] v-text=value[3]></span>
-                    <p>{{ object.account[2] }}</p>
-                </div>
+                    <div v-for="(value,key) in object" >
+                        <label :style="label">{{ value[0] }}</label>
+                        <input :type=value[1] :name=key v-model="value.name">
+                        <span :style="fontRed" :id=value[2] v-text=value[3]></span>
+                        <p>{{ object.account[2] }}</p>
+                    </div>
                 <div class="row" style="text-align: center;">
                     <input type="submit" value="提交">
                 </div>

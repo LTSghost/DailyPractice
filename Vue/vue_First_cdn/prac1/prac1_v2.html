@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue_first_prac1_v2</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <two-input
+        v-model:two-Input1="input1"
+        v-model:two-Input2="input2"
+        ></two-input>
+        <p :style='appP'>{{ reverseComputed }}</p>
+    </div>
+
+    <script src="./prac1_v2.js"></script>
+</body>
+</html>

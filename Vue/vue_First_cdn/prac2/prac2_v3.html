@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue_first_prac2_v3</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <customized-form 
+        v-model:form-input1="account"
+        v-model:form-input2="pwd"
+        v-model:form-input3="email"
+        v-model:form-input4="mobile"
+        >
+        <div style="text-align: center;">
+            <input type="submit" value="提交">
+        </div>
+        </customized-form>
+        {{ account }}
+    </div>
+
+    <script src="./prac2_v3.js"></script>
+</body>
+</html>
