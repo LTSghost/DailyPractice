@@ -9,18 +9,16 @@
 </head>
 <body>
     <div id="app">
-        <form onsubmit="return validateForm()" action="">
+        <form @submit.prevent="validateForm()" action="">
             <p v-html="p" :style="fontBlue"></p>
             <fieldset>
                 <legend v-text="legend"></legend>
-                <!-- <li v-for="(value, key, index) in object"> -->
-                    <div v-for="(value,key) in object" >
-                        <label :style="label">{{ value[0] }}</label>
-                        <input :type=value[1] :name=key v-model="value.name">
-                        <span :style="fontRed" :id=value[2] v-text=value[3]></span>
-                        <p>{{ object.account[2] }}</p>
+                    <div v-for="obj in object" >
+                        <label :style="label">{{ obj.name }}</label>
+                        <input :type=obj.type v-model="obj.variable">
+                        <span :style="fontRed" v-text="obj.err"></span>
                     </div>
-                <div class="row" style="text-align: center;">
+                <div style="text-align: center;">
                     <input type="submit" value="提交">
                 </div>
             </fieldset>
@@ -29,4 +27,4 @@
 
     <script src="./prac2_v2.js"></script>
 </body>
-</html>
+</html>    

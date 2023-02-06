@@ -101,14 +101,5 @@ const app = Vue.createApp({
                 this.mobileErr = "";
             }
         }
-    },
-    computed: {
-        // validateForm(){
-        //     console.log("hello")
-        //     // accountCheck(this.account,this.acErr)
-        //     // passwordCheck(pw,pwCheck)
-        //     // mailCheck(email,emailCheck)
-        //     // numberCheck(phone,phoneCheck)
-        // }
-    },
+    }
 }).mount("#app")
