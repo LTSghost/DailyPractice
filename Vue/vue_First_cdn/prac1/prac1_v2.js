@@ -41,8 +41,8 @@ const TwoInput = {
 const app = Vue.createApp({
     data() {
         return {
-            input1:"abcd",
-            input2:"12345",
+            account:"abcd",
+            password:"12345",
             appP:{
                 color: "#f6115d",
                 "padding-left": "20px"
@@ -54,17 +54,17 @@ const app = Vue.createApp({
     },
     computed: {
         reverseComputed(){
-            var input1 = this.input1;
-            var input2 = this.input2;
+            var account = this.account;
+            var password = this.password;
             var mergeText = "";
-            var limit = Math.max(input1.length,input2.length)
+            var limit = Math.max(account.length,password.length)
             
             for (let i = 0; i < limit; i++) {
-                if (input1[i]){
-                    mergeText += input1[i]
+                if (account[i]){
+                    mergeText += account[i]
                 }
-                if (input2[i]){
-                    mergeText += input2[i]
+                if (password[i]){
+                    mergeText += password[i]
                 }
             }
 

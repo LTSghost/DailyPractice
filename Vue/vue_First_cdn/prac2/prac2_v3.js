@@ -1,12 +1,12 @@
 const Form = {
-    props:["formInput1","formInput2","formInput3","formInput4","acErr"],
-    // props:{
-    //     formInput1:String,
-    //     formInput2:String,
-    //     formInput3:String,
-    //     formInput4:String,
-    //     acErr:String
-    // },
+    // props:["formInput1","formInput2","formInput3","formInput4","acErr"],
+    props:{
+        formInput1:String,
+        formInput2:String,
+        formInput3:String,
+        formInput4:String,
+        acErr:String,
+    },
     template:
     `
     <form @submit.prevent="validateForm()" action="">
@@ -18,7 +18,7 @@ const Form = {
                     <input 
                     :type=value[1] 
                     :name=key
-                    :value="formInput1"
+                    :value="formInput"
                     @input="$emit(value[3] , $event.target.value)" >
                     <span :style="fontRed" :id=value[4] v-text=value[5]></span>
                 </div>
@@ -46,16 +46,21 @@ const Form = {
                 'text-align': "right"
             },
             object: {
-                account: ["帳號：","text","form-input1",'update:formInput1',"acCheck",this.acErr],
+                account: ["帳號：","text",this.formInput1,'update:formInput1',"acCheck",this.acErr],
                 pwd: ["密碼：","password",this.formInput2,"update:formInput2","pwdCheck","pwdErr"],
                 email: ["Email：","text",this.formInput3,"update:formInput3","emailCheck","emailErr"],
                 mobile: ["手機：","text",this.formInput4,"update:formInput4","mobileCheck","mobileErr"]
             },
+            object1: [{
+                    account:this.formInput1
+                
+            }],
             // item:[this.formInput1,this.formInput2,this.formInput3,this.formInput4]
         }
     },
     methods: {
         validateForm(){
+            console.log()
             // this.accountCheck(this.formInput1)
             // this.passwordCheck(this.formInput2)
             // this.emailCheck(this.formInput3)

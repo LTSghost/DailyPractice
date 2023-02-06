@@ -13,6 +13,7 @@
     <div id="app">
             
             <div :style="div">
+                <!-- give <router-link> click event, according recent URL to add class .linkRed  -->
                 <router-link to="/" @click="detectHome()" :class="[homeIsActive ? activeClass : '']">首頁</router-link>&nbsp;
                 <router-link to="/test1" @click="detectTest1()" :class="[test1IsActive ? activeClass : '']">測試畫面1</router-link>&nbsp;
                 <router-link to="/test2" @click="detectTest2()" :class="[test2IsActive ? activeClass : '']">測試畫面2</router-link>&nbsp;
@@ -20,6 +21,7 @@
                 <router-link to="/test4" @click="detectTest4()" :class="[test4IsActive ? activeClass : '']">測試畫面4</router-link>&nbsp;
             </div>
 
+            <!-- render router location -->
             <router-view></router-view>
     </div>
     

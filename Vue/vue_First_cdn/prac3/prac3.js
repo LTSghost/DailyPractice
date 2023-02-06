@@ -1,3 +1,4 @@
+// router components
 const Home = {
     data() {
         return {
@@ -8,7 +9,7 @@ const Home = {
             }
         }
     },
-    template: '<p :style="p">首頁<p>'
+    template: '<p :style="p">首頁</p>'
 };
 const Test1 = {
     data() {
@@ -20,7 +21,7 @@ const Test1 = {
             }
         }
     },
-    template: '<p :style="p">測試畫面1<p>'
+    template: '<p :style="p">測試畫面1</p>'
 };
 const Test2 = {
     data() {
@@ -32,7 +33,7 @@ const Test2 = {
             }
         }
     },
-    template: '<p :style="p">測試畫面2<p>'
+    template: '<p :style="p">測試畫面2</p>'
 };
 const Test3 = {
     data() {
@@ -44,7 +45,7 @@ const Test3 = {
             }
         }
     },
-    template: '<p :style="p">測試畫面3<p>'
+    template: '<p :style="p">測試畫面3</p>'
 };
 const Test4 = {
     data() {
@@ -56,7 +57,7 @@ const Test4 = {
             }
         }
     },
-    template: '<p :style="p">測試畫面4<p>'
+    template: '<p :style="p">測試畫面4</p>'
 };
 
 const routes = [{
@@ -77,7 +78,7 @@ const routes = [{
 }, ]
 
 const router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
+    history: VueRouter.createWebHashHistory(),  // history 設定為 createWebHashHistory() 即可開啟 HTML5 (History API) Mode
     routes,
 })
 

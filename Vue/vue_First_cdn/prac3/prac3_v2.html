@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue_First_prac3_v2</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <link rel="stylesheet" href="./prac3.css">
+</head>
+<body>
+    <div id="app">
+        <all-router-link :now-href="nowHref"></all-router-link>
+
+        <!-- 渲染 route 的位置 -->
+        <router-view></router-view>
+    </div>
+
+    <script src="./prac3_v2.js"></script>
+</body>
+</html>
