@@ -17,7 +17,7 @@ const app = Vue.createApp({
             },
             legend: "註冊:",
             account: "LTS",
-            pwd: "lts12",
+            pwd: "lts123",
             email: "DKLTSghost@@gmail.com",
             mobile: "09895342920",
             acErr: "",
@@ -28,12 +28,13 @@ const app = Vue.createApp({
     },
     methods: {
         validateForm(){
-            this.accountCheck(this.account)
-            this.passwordCheck(this.pwd)
-            this.emailCheck(this.email)
-            this.mobileCheck(this.mobile)
+            this.accountCheck()
+            this.passwordCheck()
+            this.emailCheck()
+            this.mobileCheck()
         },
-        accountCheck(account){
+        accountCheck(){
+            account = this.account;
             re = /^[a-zA-Z][0-9_a-zA-Z]{1,17}$/;
             re = /^[a-zA-z][\w]{0,17}/
             
@@ -51,22 +52,30 @@ const app = Vue.createApp({
             }
         },
         passwordCheck(pwd){
-            re = /^[a-zA-Z0-9]{1,18}$/     
+            pwd = this.pwd;
+            // re = /^[a-zA-Z0-9]{1,18}$/
+            re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]+/
+            // (?=.*[a-z]) 需包含小寫
+            // (?=.*[A-Z]) 需包含大寫
+            // (?=.*\d)    需包含數字
 
             if (pwd == "") {
                 this.pwdErr = "密碼不能為空"
                 return 0
             }
-
+            console.log("re=",re)
+            console.log("pwd=",pwd)
+            console.log(re.test(pwd))
             if ( re.test(pwd) == false ) {
-                this.pwdErr = "請輸入英文及數字組合"
+                this.pwdErr = "請輸入英文及數字組合，須包含英文大寫跟小寫"
             } else if (pwd.length < 6 || pwd.length > 18) {
                 this.pwdErr = "長度應為6-18字符";
             } else {
                 this.pwdErr = "";
             }
         },
-        emailCheck(email){
+        emailCheck(){
+            email = this.email;
             re = /^[^\.](?!.*\.\.)[^@]+@[a-zA-Z0-9._]+[^\.]$/;   // dot 不能作為首尾字符, 不能連續 dot
             // ^[^\.] 字首不能 dot
             // (?!.*\.\.) 後面不能有 連續..
@@ -87,7 +96,8 @@ const app = Vue.createApp({
                 this.emailErr = "";
             }
         },
-        mobileCheck(mobile){
+        mobileCheck(){
+            mobile = this.mobile;
             re = /^09[0-9]{8}$/;    // e.g. 0900-000-000 Taiwan regular cell phone number first 09
 
             if (mobile == "") {

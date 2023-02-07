@@ -8,7 +8,3 @@
 # prac3_v3
 * 透過 Vue3 的 vue-router@4 產生 <router-link\>
 * 把多個 <router-link\> 透過 v-for 產生後包成一個 <all-router-link\> 元件再 render 過去
-
-
-完成 v-for router
-英文大小寫

@@ -16,22 +16,22 @@
                 <legend v-text="legend"></legend>
                 <div>
                     <label :style="label">帳號：</label>
-                    <input type="text" v-model="account">
+                    <input type="text" v-model="account" @blur="accountCheck()">
                     <span :style="error" v-text="acErr"></span>
                 </div>
                 <div>
                     <label :style="label">密碼：</label>
-                    <input type="password" v-model="pwd">
+                    <input type="password" v-model="pwd" @blur="passwordCheck()">
                     <span :style="error" v-text="pwdErr"></span>
                 </div>
                 <div>
                     <label :style="label">Email：</label>
-                    <input type="text" v-model="email">
+                    <input type="text" v-model="email" @blur="emailCheck()">
                     <span :style="error" v-text="emailErr"></span>
                 </div>
                 <div>
                     <label :style="label">手機：</label>
-                    <input type="text" v-model="mobile" maxlength="10">
+                    <input type="text" v-model="mobile" maxlength="10" @blur="mobileCheck()">
                     <span :style="error" v-text="mobileErr"></span>
                 </div>
                 <div class="row" style="text-align: center;">

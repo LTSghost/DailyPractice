@@ -55,13 +55,15 @@ const app = Vue.createApp({
             }
         },
         passwordCheck(pwd){
-            re = /^[a-zA-Z0-9]{1,18}$/     
-    
+            // re = /^[a-zA-Z0-9]{1,18}$/     
+            re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]+/
             if (pwd == "") {
                 this.object[1]['err'] = "密碼不能為空"
                 return 0
             }
-
+            console.log("re=",re)
+            console.log("pwd=",pwd)
+            console.log(re.test(pwd))
             if ( re.test(pwd) == false ) {
                 this.object[1]['err'] = "請輸入英文及數字組合"
             } else if (pwd.length < 6 || pwd.length > 18) {

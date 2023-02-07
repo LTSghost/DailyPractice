@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>字符串交叉合并</title>
+    <script src="https://cdn.staticfile.org/vue/3.2.36/vue.global.min.js"></script>
+    <style>
+        .result {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app-demo">
+        <table>
+            <tr>
+                <td>字符串1：</td>
+                <td><input type="text" v-model="msgMerge1"></td>
+            </tr>
+            <tr>
+                <td>字符串2：</td>
+                <td><input type="text" v-model="msgMerge2"></td>
+            </tr>
+        </table>
+        <p class="result">使用 computed 交叉合并后字符串: {{ mergeMessage }}</p>
+        <p class="result">使用 methods 交叉合并后字符串: {{ mergeMessage2() }}</p>
+    </div>
+
+    <script>
+        const app = {
+            data() {
+                return {
+                    msgMerge1: "zaqwsxcde",
+                    msgMerge2: "1593746"
+                }
+            },
+            computed: {
+                // 计算属性的 getter
+                mergeMessage: function() {
+                    const a = this.msgMerge1.split("");
+                    const b = this.msgMerge2.split("");
+                    let mergedString = "";
+                    for (var i = 0; i < a.length || i < b.length; i++) {
+                        if (i < a.length) {
+                            mergedString += a[i];
+                        }
+                        if (i < b.length) {
+                            mergedString += b[i];
+                        }
+                    }
+                    return mergedString;
+                }
+            },
+            methods: {
+                mergeMessage2: function() {
+                    const a = this.msgMerge1.split("");
+                    const b = this.msgMerge2.split("");
+                    let mergedString = "";
+                    for (var i = 0; i < a.length || i < b.length; i++) {
+                        if (i < a.length) {
+                            mergedString += a[i];
+                        }
+                        if (i < b.length) {
+                            mergedString += b[i];
+                        }
+                    }
+
+                    return mergedString;
+                }
+            }
+        };
+
+        Vue.createApp(app).mount('#app-demo');
+    </script>
+</body>
+
+</html>

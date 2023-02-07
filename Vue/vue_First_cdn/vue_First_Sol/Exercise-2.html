@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>表单验证</title>
+    <script src="https://cdn.staticfile.org/vue/3.2.36/vue.global.min.js"></script>
+
+    <style>
+        .error {
+            color: red;
+        }
+        
+        label {
+            display: inline-block;
+            width: 70px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app-demo">
+        <form @submit.prevent="checkForm">
+            <p style="color: blue;">检核规则：<br>1. 用户名6-18个字符，可使用数字、字母、下划线，需以字母开头<br> 2. 密码6-18个字符(字母和数字), 大小写字母和数字必须都要有</p>
+
+            <fieldset>
+                <legend>注册:</legend>
+                <div class="row">
+                    <label>用户名：</label>
+                    <input type="text" name="name" v-model="name" @change="validateUserName">
+                    <span class="error">{{ nameErr }}</span>
+                </div>
+                <div class="row">
+                    <label>密码：</label>
+                    <input type="password" name="pwd" v-model="pwd" @change="validatePwd">
+                    <span class="error">{{ pwdErr }}</span>
+                </div>
+                <div class="row">
+                    <label>Email：</label>
+                    <input type="text" name="email" v-model="email" @change="validateEmail">
+                    <span class="error">{{ emailErr }}</span>
+                </div>
+                <div class="row">
+                    <label>手机号：</label>
+                    <input type="text" name="mobile" maxlength="11" v-model="mobile" @change="validateMobile">
+                    <span class="error">{{ mobileErr }}</span>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <input type="submit" value="提交">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        const app = {
+            data() {
+                return {
+                    name: null,
+                    pwd: null,
+                    email: null,
+                    mobile: null,
+
+                    nameErr: "",
+                    pwdErr: "",
+                    emailErr: "",
+                    mobileErr: ""
+                }
+            },
+            methods: {
+                //检核用户名
+                validateUserName: function() {
+                    //检核用户名
+                    this.nameErr = "";
+                    if (!this.name) {
+                        // 1. 不能为空
+                        this.nameErr = "用户名不能为空";
+                    } else if (!/[a-zA-Z]/.test(this.name[0])) {
+                        // 2. 首字符不是字母
+                        this.nameErr = "用户名必须是英文开头";
+                    } else if (!/\w{6,18}/.test(this.name)) {
+                        // 3、用户名必须是数字、字母、下划线组成
+                        this.nameErr = "用户名只能为包括数字字母下划线的6-18位字符串";
+                    }
+                },
+                //检核密码
+                validatePwd: function() {
+                    this.pwdErr = "";
+                    if (!this.pwd) {
+                        this.pwdErr = "密码不能为空";
+                    } else if ((/\d+/.test(this.pwd) && /[a-z]+/.test(this.pwd) && /[A-Z]+/.test(this.pwd) && /[a-zA-Z0-9]{6,18}/.test(this.pwd)) == false) {
+                        // /\d+/.test(pwd) 检核必须包含数字
+                        // /[a-z]+/.test(pwd) 检核必须包含小写字母
+                        // /[A-Z]+/.test(pwd) 检核必须包含大写字母
+                        //  /[a-zA-Z0-9]{6,18}/.test(pwd) 检核必须为字母数字组合的6-18位字符串
+                        this.pwdErr = "密码6-18个字符（字母和数字），大小写字母和数字必须都要有";
+                    }
+                },
+                //检核邮箱
+                validateEmail: function() {
+                    this.emailErr = "";
+                    let reg_email = new RegExp(/^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/); //邮箱正则
+                    if (!this.email) {
+                        this.emailErr = "邮箱不能为空";
+                    } else if (!reg_email.test(this.email)) {
+                        this.emailErr = "邮箱格式错误";
+                    }
+                },
+                //检核手机号
+                validateMobile: function() {
+                    this.mobileErr = "";
+                    let reg_tel = new RegExp(/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/); //11位手机号码正则
+                    //var reg_tel = /^[09]d{8}$/; //以09开头的10位手机号码正则
+                    if (!this.mobile) {
+                        this.mobileErr = "手机号不能为空";
+                    } else if (!reg_tel.test(this.mobile)) {
+                        this.mobileErr = "手机号格式错误";
+                    }
+                },
+                //提交时检核form
+                checkForm: function() {
+                    if (!this.nameErr) {
+                        this.validateUserName();
+                    }
+                    if (!this.pwdErr) {
+                        this.validatePwd();
+                    }
+                    if (!this.emailErr) {
+                        this.validateEmail();
+                    }
+                    if (!this.mobileErr) {
+                        this.validateMobile();
+                    }
+
+                    //if (this.nameErr || this.pwdErr || this.emailErr || this.mobileErr) {
+                    //    return false;
+                    //} else {
+                    //    return true;
+                    //}
+                }
+            }
+        };
+
+        Vue.createApp(app).mount('#app-demo');
+    </script>
+</body>
+
+</html>

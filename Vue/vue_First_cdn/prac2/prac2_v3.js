@@ -18,12 +18,12 @@ const Form = {
                     <input 
                     :type=value[1] 
                     :name=key
-                    :value="formInput"
+                    :value=value[2]
                     @input="$emit(value[3] , $event.target.value)" >
                     <span :style="fontRed" :id=value[4] v-text=value[5]></span>
                 </div>
                 <slot></slot>
-                {{ formInput1 }}
+                內部account : {{ formInput1 }}
         </fieldset>
     </form>
     `,

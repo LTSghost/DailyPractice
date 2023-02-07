@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>outside_learn</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="app">
+        <button
+        v-for="tab in tabs"
+        :key="tab"
+        :class="['tab-button', { active: currentTab === tab }]"
+        @click="currentTab = tab">
+        {{ tab }}
+        </button>
+
+        <!-- <tab-home v-if="currentTab === 'Home'"></tab-home>
+        <tab-posts v-if="currentTab === 'Posts'"></tab-posts>
+        <tab-archive v-if="currentTab === 'Archive'"></tab-archive> -->
+
+        <keep-alive>
+            <component :is="currentTabComponent"></component>
+        </keep-alive>
+
+        <div>
+            <label v-for="opt in options">
+                <input type="radio" :value="opt" v-model="dynamic_slot_name">
+                {{ opt }}
+            </label>
+        </div>
+
+        <light-box>
+            <template v-slot:[dynamic_slot_name]>
+                <h2>008JS 好棒棒!</h2>
+            </template>
+        </light-box>
+
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
