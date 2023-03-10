@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 使用 Spring 來創建對象, 在 Spring 這些都稱為Bean 
+        類別 變數 = new 類別();
+        Hello hello = new Hello();
+
+        id = 變數名稱
+        class = new 的對象;
+        property 相當於給對象中的屬性設置一個值!
+    -->
+
+    <bean id="userDaoImpl" class="com.kuang.dao.UserDaoImpl"/>
+    <bean id="mysqlImpl" class="com.kuang.dao.UserDaoMysqlIMPL"/>
+    <bean id="oracleImpl" class="com.kuang.dao.UserDaoOracleImpl"/>
+    <bean id="sqlServerImpl" class="com.kuang.dao.UserDaoSQLserverImpl"/>
+
+    <bean id="UserServiceImpl" class="com.kuang.service.UserServiceImpl">
+        <property name="userDao" ref="sqlServerImpl"/>
+    </bean>
+
+    <!-- 
+        ref: 引用 Spring 容器中創建好的對象 
+        value: 具體的值, 基本數據類型!
+    -->
+</beans>

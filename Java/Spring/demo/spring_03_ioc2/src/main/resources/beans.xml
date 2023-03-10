@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- <bean id="user" class="com.kuang.pojo.User">
+        <property name="name" value="LTS"/>
+    </bean> -->
+
+    <!-- 下標賦值 -->
+    <!-- <bean id="user" class="com.kuang.pojo.User">
+        <constructor-arg index="0" value="LTS strength role : Varus" />
+    </bean> -->
+
+    <!-- 型態賦值, 不建議使用 -->
+    <!-- <bean id="user" class="com.kuang.pojo.User">
+        <constructor-arg type="java.lang.String" value="Ran strength role : LUX" />
+    </bean> -->
+
+    <!-- 直接通過參數名稱設置 -->
+    <bean id="user" class="com.kuang.pojo.User">
+        <constructor-arg name="name" value="LTS love Ran" />
+    </bean>
+
+    <alias name="user" alias="userAlias" />
+
+    <!-- <bean id="userTest" class="com.kuang.pojo.UserTest">
+    </bean> -->
+
+
+    <!-- 
+        id : bean 的唯一標示符, 也就是相當於我們取的對象名
+        class : bean 對象所對應的全限定名: 包名 + 類型
+        name : 也是別名, 而且 name 可以同時取多個別名 [, ' ' ;] 逗號空格分號都可分隔
+     -->
+    <bean id="userTest" class="com.kuang.pojo.UserTest" name="uT,u2T u3T;u4T">
+        <property name="name" value="我是userTest"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.kuang.pojo.Address">
+        <property name="address" value="台北"/>
+    </bean>
+
+    <bean id="student" class="com.kuang.pojo.Student">
+        <!-- 第一種, 普通值注入, value -->
+        <property name="name" value="LTS" />
+
+        <!-- 第二種, bean注入, ref -->
+        <property name="address" ref="address" />
+
+        <!-- Array, bean注入, ref -->
+        <property name="books">
+            <array>
+                <value>Varus</value>
+                <value>Ezreal</value>
+                <value>Zeri</value>
+                <value>Xayah</value>
+            </array>
+        </property>
+
+        <!-- List -->
+        <property name="hobbys">
+            <list>
+                <value>gaming</value>
+                <value>drama</value>
+                <value>coding</value>
+            </list>
+        </property>
+
+        <!-- Map -->
+        <property name="card">
+            <map>
+                <entry key="IdCard" value="1111232321"/>
+                <entry key="BankCard" value="113332323"/>
+            </map>
+        </property>
+
+        <!-- Set -->
+        <property name="games">
+            <set>
+                <value>League of Legends</value>
+                <value>Diablo4</value>
+                <value>PUBG</value>
+            </set>
+        </property>
+
+        <!-- Properties -->
+        <property name="info">
+            <props>
+                <prop key="number">20230309</prop>
+                <prop key="gender">male</prop>
+                <prop key="username">root</prop>
+                <prop key="password">123456</prop>
+            </props>
+        </property>
+
+
+    </bean>
+
+</beans>
