@@ -19,7 +19,14 @@ public class SysRoleServiceImpl implements SysRoleService{
 
     @Override
     public List<SysRole> searchSysRoles(String query) {
-        return sysRoleRepository.searchSysRoles(query);
+        // return sysRoleRepository.searchSysRoles(query);
+        List<SysRole> sysrole = sysRoleRepository.searchSysRoles(query);
+        return sysrole;
     }
-    
+
+    @Override
+    public SysRole createSysRole(SysRole sysRole) {
+        return sysRoleRepository.save(sysRole);
+    }
+
 }

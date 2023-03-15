@@ -14,7 +14,7 @@ import net.java.test.springbootsearchrestapi.entity.Product;
 import net.java.test.springbootsearchrestapi.service.ProductService;
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1/product")
 public class ProductController {
     
     private ProductService productService;

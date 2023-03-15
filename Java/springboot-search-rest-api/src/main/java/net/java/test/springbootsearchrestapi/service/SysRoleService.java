@@ -6,4 +6,6 @@ import net.java.test.springbootsearchrestapi.entity.SysRole;
 
 public interface SysRoleService {
     List<SysRole> searchSysRoles(String query);
+
+    SysRole createSysRole(SysRole sysRole);
 }
