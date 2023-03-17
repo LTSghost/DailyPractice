@@ -38,12 +38,15 @@ public class SysMenu {
     private String P_MENU_ID;
 
     @Column(columnDefinition = "integer default 1")
+    @JsonProperty("SEQ_NO")
     private int SEQ_NO;
 
     @Column(length = 100)
+    @JsonProperty("ICON")
     private String ICON;
 
     @Column(length = 100)
+    @JsonProperty("PATH")
     private String PATH;
 
     @Column(length = 50)

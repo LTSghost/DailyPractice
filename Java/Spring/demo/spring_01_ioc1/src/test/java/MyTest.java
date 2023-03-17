@@ -2,6 +2,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.kuang.dao.UserDao;
+import com.kuang.dao.UserDaoImpl;
 import com.kuang.dao.UserDaoMysqlIMPL;
 import com.kuang.dao.UserDaoOracleImpl;
 import com.kuang.dao.UserDaoSQLserverImpl;
@@ -16,7 +17,7 @@ public class MyTest {
 
         // userService.getUser();   -----------nonIoC
 
-        ((UserServiceImpl) userService).setUserDao(new UserDaoSQLserverImpl());
+        ((UserServiceImpl) userService).setUserDao(new UserDaoImpl());
         userService.getUser();
 
     }

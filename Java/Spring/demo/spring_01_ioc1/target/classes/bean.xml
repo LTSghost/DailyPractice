@@ -19,7 +19,7 @@
     <bean id="sqlServerImpl" class="com.kuang.dao.UserDaoSQLserverImpl"/>
 
     <bean id="UserServiceImpl" class="com.kuang.service.UserServiceImpl">
-        <property name="userDao" ref="sqlServerImpl"/>
+        <property name="userDao" ref="oracleImpl"/>
     </bean>
 
     <!-- 
