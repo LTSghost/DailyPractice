@@ -12,5 +12,6 @@
   </head>
   <body>
   <h1>index.JSP first page</h1>
+  <h1>${hello }</h1>
   </body>
 </html>

@@ -21,6 +21,10 @@
                 <router-link to="/test4" @click="detectTest4()" :class="[test4IsActive ? activeClass : '']">測試畫面4</router-link>&nbsp;
             </div>
 
+            window.location.path:{{ wlp }}
+            <br>
+            window.location.href:{{ wlh }}
+
             <!-- render router location -->
             <router-view></router-view>
     </div>

@@ -86,6 +86,8 @@ const app = Vue.createApp({
     data() {
         return {
             p:"",
+            wlp: window.location.pathname,
+            wlh: window.location.href,
             div:{
                 width: "fit-content",
                 'background-color': 'lightgray'

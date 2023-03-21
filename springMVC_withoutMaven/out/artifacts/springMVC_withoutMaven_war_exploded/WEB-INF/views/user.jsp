@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
+    <title>User</title>
 </head>
 <body>
-    <h1 style="color: red">哭阿~  你媽死了</h1>
+    <h1 style="color: red">This is User.jsp</h1>
+    <h1>${hello }</h1>
 </body>
 </html>
