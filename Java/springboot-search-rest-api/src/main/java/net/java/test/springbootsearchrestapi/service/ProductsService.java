@@ -7,5 +7,5 @@ import net.java.test.springbootsearchrestapi.entity.Products;
 public interface ProductsService {
     List<Products> readProducts();
 
-    List<Products> readProductsById();
+    List<Products> readProductsById(String id);
 }

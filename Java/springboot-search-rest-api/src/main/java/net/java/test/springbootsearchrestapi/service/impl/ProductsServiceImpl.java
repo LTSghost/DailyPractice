@@ -25,8 +25,9 @@ public class ProductsServiceImpl implements ProductsService{
     }
 
     @Override
-    public List<Products> readProductsById() {
-        List<Products> productsList = productsRepository.readProducts();
+    public List<Products> readProductsById(String id) {
+        List<Products> productsList = productsRepository.readProductsById(id);
         return productsList;
     }
+
 }
