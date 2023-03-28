@@ -14,3 +14,18 @@ node_modules
 .sass-cache:
 
 .vscode
+
+# Ignore springMVC operation data
+
+springMVC_maven/out
+springMVC_maven/target
+
+# Ignore springMVC_maven_webapp operation data
+
+springMVC_maven_webapp/out
+springMVC_maven_webapp/target
+
+# Ignore springMVC_withoutMaven operation data
+
+springMVC_withoutMaven/out
+springMVC_withoutMaven/target

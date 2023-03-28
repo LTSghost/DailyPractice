@@ -31,25 +31,26 @@
   </form>
 
     <form action="${pageContext.request.contextPath}/student" method="post">
-    <div>
-      <label style="float:left; width: 60px; text-align: right">ID:</label>
-      <input type="text" name="id" placeholder="1" value="1" />
-    </div>
-    <div>
-      <label style="float:left; width: 60px; text-align: right">Name:</label>
-      <input type="text" name="name" placeholder="LTS" value="LTS" />
-    </div>
-    <div>
-      <label style="float:left; width: 60px; text-align: right">Age:</label>
-      <input type="text" name="age" placeholder="26" value="26"/>
-    </div>
-    <div>
-      <label style="float:left; width: 60px; text-align: right">Email:</label>
-      <input type="text" name="email" placeholder="DKLTSghost@gmail.com" value="DKLTSghost@gmail.com"/>
-    </div>
-    <div style="padding-left: 100px; padding-top:5px">
-      <input type="submit"/>
-    </div>
+      <div>
+        <label style="float:left; width: 60px; text-align: right">ID:</label>
+        <input type="text" name="id" placeholder="1" value="1" />
+      </div>
+      <div>
+        <label style="float:left; width: 60px; text-align: right">Name:</label>
+        <input type="text" name="name" placeholder="LTS" value="LTS" />
+      </div>
+      <div>
+        <label style="float:left; width: 60px; text-align: right">Age:</label>
+        <input type="text" name="age" placeholder="26" value="26"/>
+      </div>
+      <div>
+        <label style="float:left; width: 60px; text-align: right">Email:</label>
+        <input type="text" name="email" placeholder="DKLTSghost@gmail.com" value="DKLTSghost@gmail.com"/>
+      </div>
+      <div style="padding-left: 100px; padding-top:5px">
+        <input type="submit"/>
+      </div>
   </form>
+
   </body>
 </html>

@@ -2,6 +2,7 @@ package com.syscom.lingan.entity;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter
@@ -9,7 +10,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class Student implements Serializable {
     private int id;
     private String name;
     private int age;

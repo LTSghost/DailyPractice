@@ -1,5 +1,6 @@
 package net.java.test.springbootsearchrestapi.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -23,47 +24,51 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "product")
-public class Products {
+public class Products implements Serializable{
     
     @Id
-    @Column(length = 50)
+    @Column(name = "ITEM_NO", length = 50)
     @JsonProperty("ITEM_NO")
-    private String ITEM_NO;
+    private String itemNo;
 
-    @Column(length = 100)
+    @Column(name = "ITEM_NAME", length = 100)
     @JsonProperty("ITEM_NAME")
-    private String ITEM_NAME;
+    private String itemName;
 
-    @Column(precision=10, scale=0)
+    @Column(name = "PRICE", precision=10, scale=0)
     @JsonProperty("PRICE")
-    private int PRICE;
+    private int price;
 
     // @Column(columnDefinition = "DATE")
+    @Column(name = "EFF_DATE_FROM")
     @JsonProperty("EFF_DATE_FROM")
-    private LocalDate EFF_DATE_FROM;
+    private LocalDate effDateFrom;
 
+    @Column(name = "EFF_DATE_TO")
     @JsonProperty("EFF_DATE_TO")
-    private LocalDate EFF_DATE_TO;
+    private LocalDate effDateTo;
 
-    @Column(length = 20)
+    @Column(name = "TAX", length = 20)
     @JsonProperty("TAX")
-    private String TAX;
+    private String tax;
 
-    @Column(length = 50)
+    @Column(name = "CREATOR", length = 50)
     @JsonProperty("CREATOR")
-    private String CREATOR;
+    private String creator;
 
     @CreationTimestamp
+    @Column(name = "CREATE_TIME")
     @JsonProperty("CREATE_TIME")
-    private LocalDateTime CREATE_TIME;
+    private LocalDateTime createTime;
 
-    @Column(length = 50)
+    @Column(name = "UPDATER", length = 50)
     @JsonProperty("UPDATER")
-    private String UPDATER;
+    private String updater;
 
     @UpdateTimestamp
+    @Column(name = "UPDATE_TIME")
     @JsonProperty("UPDATE_TIME")
-    private LocalDateTime UPDATE_TIME;
+    private LocalDateTime updateTime;
 
     // `ITEM_NO` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品代号',
     // `ITEM_NAME` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品名称',

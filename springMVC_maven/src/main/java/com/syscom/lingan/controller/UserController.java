@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.syscom.lingan.domain.Account;
 import com.syscom.lingan.entity.Student;
 import lombok.SneakyThrows;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,13 +49,14 @@ public class UserController {
         newMap.put("age", student.getAge());
         newMap.put("email", student.getAge());
         newMap.put("createTime", sf.format(student.getCreateTime()));
-//        newMap.put("createTime2", sf.format(student.getCreateTime().getTime()+5));
+//        newMap.put("createTime2", sf.format(student.getCreateTime().getTime()+5)); // time plus 5
         newMap.put("updateTime", sf2.format(student.getUpdateTime()));
         str = mapper.writeValueAsString(newMap);
 
         String tmpStr = mapper.writeValueAsString(student2);
 //        return "[" + str + "," + tmpStr + "]";
 
+        // return student Map<String, Object>
         Map<String, Object> map2 = mapper.convertValue(student, Map.class);
         map2.replace("createTime",sf.format(map2.get("createTime")));
         map2.replace("updateTime",sf2.format(map2.get("updateTime")));
@@ -65,8 +68,32 @@ public class UserController {
     }
 
     @SneakyThrows
+    @RequestMapping("studentString")
+    public String studentString(){
+        Date date = new Date();
+        Student student = new Student(1,"哈哈是我啦!",26,"DKLTSghost@gmail.com",date,date);
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        return mapper.writeValueAsString(student);
+    }
+
+
+    @PostMapping(value = "/student")
+    public Map<String, Object> postStudent(Student student){
+        Map<String, Object> newMap = new HashMap<>();
+
+        newMap.put("ID", student.getId());
+        newMap.put("Name", student.getName());
+        newMap.put("Age", student.getAge());
+        newMap.put("Email", student.getEmail());
+
+        return newMap;
+    }
+
+    @SneakyThrows
     @RequestMapping("students")
-    public List students(){
+    public List<Map<String, Object>> students(){
         Date date = new Date();
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -78,12 +105,15 @@ public class UserController {
         Student student5 = new Student(5,"在哭阿",26,"DKLTSghost@gmail.com",date,date);
 
         List<Student> studentList = Arrays.asList(student, student2, student3, student4, student5);
-        List mapList = new ArrayList<>();
+        List<Map<String, Object>> mapList = new ArrayList<>();
+
         for(Student element :studentList){
             ObjectMapper mapper = new ObjectMapper();
             Map<String, Object> newMap = mapper.convertValue(element, Map.class);
+
             newMap.replace("createTime",sf.format(newMap.get("createTime")));
             newMap.replace("updateTime",sf2.format(newMap.get("updateTime")));
+
             mapList.add(newMap);
         }
 
@@ -106,30 +136,29 @@ public class UserController {
 
     }
 
-
     @RequestMapping("register")
     public ModelAndView register(Account account) {
 
         if ("西安凌安".equals(account.getName())) {
             if ("888888".equals(account.getPassword())) {
-                System.out.println("歡迎" + account.getName() + "登入成功，您的用戶號碼為" + account.getId());
+                System.out.println("歡迎启动服务" + account.getName() + "登入成功，您的用戶號碼為" + account.getId());
 
                 // name & password both correct
                 return renderRegister("welcome", account.getId(), account.getName(),
-                        account.getPassword(),"歡迎，" + account.getName());
+                        account.getPassword(),"歡迎启动服务，" + account.getName());
             } else {
-                System.out.println("對不起，密碼不正確，請重新輸入");
+                System.out.println("對不起，帳號密碼不正確，請重新登入");
 
                 // password incorrect
                 return renderRegister("fail", account.getId(), account.getName(),
-                        account.getPassword(),"密碼不正確");
+                        account.getPassword(),"帳號或密碼不正確");
             }
         } else {
-            System.out.println("對不起，查無此用戶");
+            System.out.println("對不起，帳號密碼不正確，請重新登入");
 
             // name incorrect
             return renderRegister("fail",account.getId(), account.getName(),
-                    account.getPassword(),"帳戶不正確");
+                    account.getPassword(),"帳號或密碼不正確");
         }
     }
 
